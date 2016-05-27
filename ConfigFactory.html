@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: ConfigList</title>
+    <title>JSDoc: Class: ConfigFactory</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: ConfigList</h1>
+    <h1 class="page-title">Class: ConfigFactory</h1>
 
     
 
@@ -28,7 +28,7 @@
 
 <header>
     
-        <h2>ConfigList</h2>
+        <h2>ConfigFactory</h2>
         
     
 </header>
@@ -40,7 +40,7 @@
 
     
 
-    <h4 class="name" id="ConfigList"><span class="type-signature"></span>new ConfigList<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="ConfigFactory"><span class="type-signature"></span>new ConfigFactory<span class="signature">()</span><span class="type-signature"></span></h4>
 
     
 
@@ -87,7 +87,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="ConfigList.js.html">ConfigList.js</a>, <a href="ConfigList.js.html#line7">line 7</a>
+        <a href="ConfigFactory.js.html">ConfigFactory.js</a>, <a href="ConfigFactory.js.html#line11">line 11</a>
     </li></ul></dd>
     
 
@@ -117,17 +117,6 @@
     </div>
 
     
-        <h3 class="subsection-title">Extends</h3>
-
-        
-
-
-    <ul>
-        <li>Array</li>
-    </ul>
-
-
-    
 
     
 
@@ -147,7 +136,7 @@
 
     
 
-    <h4 class="name" id=".initWith"><span class="type-signature">(static) </span>initWith<span class="signature">(&hellip;values)</span><span class="type-signature"> &rarr; {<a href="ConfigList.html">ConfigList</a>}</span></h4>
+    <h4 class="name" id=".createConfig"><span class="type-signature">(static) </span>createConfig<span class="signature">(value)</span><span class="type-signature"> &rarr; {<a href="Config.html">Config</a>|<a href="ConfigList.html">ConfigList</a>}</span></h4>
 
     
 
@@ -174,8 +163,6 @@
         <th>Type</th>
 
         
-        <th>Attributes</th>
-        
 
         
 
@@ -188,28 +175,24 @@
 
         <tr>
             
-                <td class="name"><code>values</code></td>
+                <td class="name"><code>value</code></td>
             
 
             <td class="type">
             
                 
+<span class="param-type">function</span>
+|
+
 <span class="param-type">Object</span>
+|
+
+<span class="param-type">Array.&lt;Object></span>
 
 
             
             </td>
 
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                    &lt;repeatable><br>
-                
-                </td>
             
 
             
@@ -255,7 +238,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="ConfigList.js.html">ConfigList.js</a>, <a href="ConfigList.js.html#line12">line 12</a>
+        <a href="ConfigFactory.js.html">ConfigFactory.js</a>, <a href="ConfigFactory.js.html#line16">line 16</a>
     </li></ul></dd>
     
 
@@ -289,6 +272,9 @@
     </dt>
     <dd>
         
+<span class="param-type"><a href="Config.html">Config</a></span>
+|
+
 <span class="param-type"><a href="ConfigList.html">ConfigList</a></span>
 
 

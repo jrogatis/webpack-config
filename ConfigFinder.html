@@ -159,7 +159,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="ConfigFinder.js.html">ConfigFinder.js</a>, <a href="ConfigFinder.js.html#line35">line 35</a>
+        <a href="ConfigFinder.js.html">ConfigFinder.js</a>, <a href="ConfigFinder.js.html#line45">line 45</a>
     </li></ul></dd>
     
 
@@ -253,7 +253,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="ConfigFinder.js.html">ConfigFinder.js</a>, <a href="ConfigFinder.js.html#line85">line 85</a>
+        <a href="ConfigFinder.js.html">ConfigFinder.js</a>, <a href="ConfigFinder.js.html#line114">line 114</a>
     </li></ul></dd>
     
 
@@ -321,7 +321,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="ConfigFinder.js.html">ConfigFinder.js</a>, <a href="ConfigFinder.js.html#line44">line 44</a>
+        <a href="ConfigFinder.js.html">ConfigFinder.js</a>, <a href="ConfigFinder.js.html#line60">line 60</a>
     </li></ul></dd>
     
 
@@ -389,7 +389,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="ConfigFinder.js.html">ConfigFinder.js</a>, <a href="ConfigFinder.js.html#line52">line 52</a>
+        <a href="ConfigFinder.js.html">ConfigFinder.js</a>, <a href="ConfigFinder.js.html#line68">line 68</a>
     </li></ul></dd>
     
 
@@ -416,7 +416,7 @@
 
     
 
-    <h4 class="name" id="findClosestConfig"><span class="type-signature"></span>findClosestConfig<span class="signature">(filename, visited<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {<a href="Config.html">Config</a>|<a href="ConfigList.html">ConfigList</a>}</span></h4>
+    <h4 class="name" id="findClosestConfigs"><span class="type-signature"></span>findClosestConfigs<span class="signature">(pattern, visited<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Array.&lt;String>}</span></h4>
 
     
 
@@ -457,7 +457,7 @@
 
         <tr>
             
-                <td class="name"><code>filename</code></td>
+                <td class="name"><code>pattern</code></td>
             
 
             <td class="type">
@@ -555,7 +555,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="ConfigFinder.js.html">ConfigFinder.js</a>, <a href="ConfigFinder.js.html#line61">line 61</a>
+        <a href="ConfigFinder.js.html">ConfigFinder.js</a>, <a href="ConfigFinder.js.html#line77">line 77</a>
     </li></ul></dd>
     
 
@@ -589,10 +589,152 @@
     </dt>
     <dd>
         
-<span class="param-type"><a href="Config.html">Config</a></span>
-|
+<span class="param-type">Array.&lt;String></span>
 
-<span class="param-type"><a href="ConfigList.html">ConfigList</a></span>
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="findConfigs"><span class="type-signature"></span>findConfigs<span class="signature">(pattern)</span><span class="type-signature"> &rarr; {Array.&lt;String>}</span></h4>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>pattern</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="ConfigFinder.js.html">ConfigFinder.js</a>, <a href="ConfigFinder.js.html#line104">line 104</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Array.&lt;String></span>
 
 
     </dd>
@@ -618,13 +760,13 @@
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-webpack-config.html">webpack-config</a></li></ul><h3>Classes</h3><ul><li><a href="ConfigCache.html">ConfigCache</a></li><li><a href="ConfigDependency.html">ConfigDependency</a></li><li><a href="ConfigDependencyIterator.html">ConfigDependencyIterator</a></li><li><a href="ConfigEnvironment.html">ConfigEnvironment</a></li><li><a href="ConfigFinder.html">ConfigFinder</a></li><li><a href="ConfigList.html">ConfigList</a></li><li><a href="ConfigLoader.html">ConfigLoader</a></li><li><a href="ConfigNameResolver.html">ConfigNameResolver</a></li><li><a href="ConfigPathResolver.html">ConfigPathResolver</a></li><li><a href="ConfigPatternCache.html">ConfigPatternCache</a></li><li><a href="ConfigTransform.html">ConfigTransform</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-webpack-config.html">webpack-config</a></li></ul><h3>Externals</h3><ul><li><a href="external-RecursiveIterator.html">RecursiveIterator</a></li></ul><h3>Classes</h3><ul><li><a href="Config.html">Config</a></li><li><a href="ConfigCache.html">ConfigCache</a></li><li><a href="ConfigDependency.html">ConfigDependency</a></li><li><a href="ConfigDependencyIterator.html">ConfigDependencyIterator</a></li><li><a href="ConfigEnvironment.html">ConfigEnvironment</a></li><li><a href="ConfigFactory.html">ConfigFactory</a></li><li><a href="ConfigFinder.html">ConfigFinder</a></li><li><a href="ConfigList.html">ConfigList</a></li><li><a href="ConfigLoader.html">ConfigLoader</a></li><li><a href="ConfigNameResolver.html">ConfigNameResolver</a></li><li><a href="ConfigPathResolver.html">ConfigPathResolver</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Thu May 19 2016 14:29:43 GMT+0300 (MSK)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Fri May 27 2016 15:07:55 GMT+0300 (MSK)
 </footer>
 
 <script> prettyPrint(); </script>

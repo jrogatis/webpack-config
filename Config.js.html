@@ -50,8 +50,27 @@ const DEPENDENCY_TREE = 'DEPENDENCY_TREE';
  */
 let evalValue = (value, context) => isFunction(value) ? value.call(context, context) : value;
 
+/**
+ * @class
+ */
 class Config {
     /**
+     * @example
+     * import Config from 'webpack-config';
+     *
+     * let config = new Config();
+     *
+     * config.extend('./test/fixtures/webpack.1.config.js');
+     *
+     * for (let {node} of config.dependencyTree) {
+     *   console.log(node.root.filename);
+     * }
+     * // ./test/fixtures/webpack.1.config.js
+     * // ./test/fixtures/webpack.2.config.js
+     * // ./test/fixtures/webpack.3.config.js
+     * // ./test/fixtures/webpack.5.config.js
+     * // ./test/fixtures/webpack.4.config.js
+     * @description Keeps information about configs which have been loaded via {@link Config#extend}
      * @readonly
      * @type {ConfigDependency}
      */
@@ -64,6 +83,22 @@ class Config {
     }
 
     /**
+     * import Config from 'webpack-config';
+     *
+     * export default new Config().defaults({
+     *    debug: true
+     * }, {
+     *    profile: false
+     * });
+     * @example
+     * import Config from 'webpack-config';
+     *
+     * export default new Config().defaults(() => {
+     *     return {
+     *         debug: true
+     *     };
+     * });
+     * @description Adds `values` if they are missing
      * @param {...(Object|Function)} values
      * @returns {Config}
      */
@@ -78,6 +113,23 @@ class Config {
     }
 
     /**
+     * @example
+     * import Config from 'webpack-config';
+     *
+     * export default new Config().merge({
+     *    debug: true
+     * }, {
+     *    profile: false
+     * });
+     * @example
+     * import Config from 'webpack-config';
+     *
+     * export default new Config().merge(() => {
+     *     return {
+     *         debug: true
+     *     };
+     * });
+     * @description Merges `values`
      * @param {...(Object|Function)} values
      * @returns {Config}
      */
@@ -96,8 +148,41 @@ class Config {
     }
 
     /**
+     * @example
+     * import Config from 'webpack-config';
+     *
+     * export default new Config().extend('./test/fixtures/webpack.1.config.js');
+     * @example
+     * import Config from 'webpack-config';
+     *
+     * export default new Config().extend('npm-module-name/webpack.config.js');
+     * @example
+     * import Config from 'webpack-config';
+     *
+     * export default new Config().extend({
+     *    './test/fixtures/webpack.1.config.js': config => {
+     *        delete config.tags;
+     *
+     *        return config;
+     *    }
+     * });
+     * @example
+     * import Config from 'webpack-config';
+     *
+     * export default new Config().extend({
+     *    './test/fixtures/webpack.1.config.js': [config => {
+     *        delete config.tags;
+     *
+     *        return config;
+     *    }, config => {
+     *        delete config.profile;
+     *
+     *        return config;
+     *    }]
+     * });
+     * @description Helps to extend config using local file or shareable config file which should be hosted under `node_modules`
      * @param {...(String|Object&lt;String,Function>|Object&lt;String,Function[]>)} values
-     * @returns {Config|ConfigList}
+     * @returns {Config}
      */
     extend(...values) {
         let map = ConfigTransform.initWith(...values);
@@ -134,6 +219,18 @@ class Config {
     }
 
     /**
+     * @example
+     * import Config from 'webpack-config';
+     *
+     * let config = new Config();
+     *
+     * config.merge({
+     *   debug: true
+     * });
+     *
+     * console.log(config.clone());
+     * // Config { debug: true }
+     * @description Creates copy of {@link Config}
      * @returns {Config}
      */
     clone() {
@@ -141,6 +238,18 @@ class Config {
     }
 
     /**
+     * @example
+     * import Config from 'webpack-config';
+     *
+     * let config = new Config();
+     *
+     * config.merge({
+     *   debug: true
+     * });
+     *
+     * console.log(config.toObject());
+     * // Object { debug: true }
+     * @description Returns plain `Object` representation of {@link Config}
      * @returns {Object}
      */
     toObject() {
@@ -158,6 +267,7 @@ class Config {
     }
 
     /**
+     * Initializes new {@link Config} with specific `values`
      * @param {...Object} values
      * @returns {Config}
      */
@@ -166,6 +276,7 @@ class Config {
     }
 
     /**
+     * Returns `webpack.config.js`
      * @readonly
      * @type {String}
      */
@@ -185,13 +296,13 @@ export default Config;
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-webpack-config.html">webpack-config</a></li></ul><h3>Classes</h3><ul><li><a href="ConfigCache.html">ConfigCache</a></li><li><a href="ConfigDependency.html">ConfigDependency</a></li><li><a href="ConfigDependencyIterator.html">ConfigDependencyIterator</a></li><li><a href="ConfigEnvironment.html">ConfigEnvironment</a></li><li><a href="ConfigFinder.html">ConfigFinder</a></li><li><a href="ConfigList.html">ConfigList</a></li><li><a href="ConfigLoader.html">ConfigLoader</a></li><li><a href="ConfigNameResolver.html">ConfigNameResolver</a></li><li><a href="ConfigPathResolver.html">ConfigPathResolver</a></li><li><a href="ConfigPatternCache.html">ConfigPatternCache</a></li><li><a href="ConfigTransform.html">ConfigTransform</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-webpack-config.html">webpack-config</a></li></ul><h3>Externals</h3><ul><li><a href="external-RecursiveIterator.html">RecursiveIterator</a></li></ul><h3>Classes</h3><ul><li><a href="Config.html">Config</a></li><li><a href="ConfigCache.html">ConfigCache</a></li><li><a href="ConfigDependency.html">ConfigDependency</a></li><li><a href="ConfigDependencyIterator.html">ConfigDependencyIterator</a></li><li><a href="ConfigEnvironment.html">ConfigEnvironment</a></li><li><a href="ConfigFactory.html">ConfigFactory</a></li><li><a href="ConfigFinder.html">ConfigFinder</a></li><li><a href="ConfigList.html">ConfigList</a></li><li><a href="ConfigLoader.html">ConfigLoader</a></li><li><a href="ConfigNameResolver.html">ConfigNameResolver</a></li><li><a href="ConfigPathResolver.html">ConfigPathResolver</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Thu May 19 2016 14:29:43 GMT+0300 (MSK)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Fri May 27 2016 15:07:55 GMT+0300 (MSK)
 </footer>
 
 <script> prettyPrint(); </script>
