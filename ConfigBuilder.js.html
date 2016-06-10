@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: ConfigBuilder.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: ConfigBuilder.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import {
+    isFunction
+} from 'lodash';
+import Config from './Config';
+import ConfigFactory from './ConfigFactory';
+
+/**
+ * @private
+ * @type {WeakMap}
+ */
+const CONFIG = new WeakMap();
+
+/**
+ * @private
+ * @type {WeakMap}
+ */
+const PENDING_CONFIG = new WeakMap();
+
+/**
+ * @private
+ * @param {String} path
+ * @param {*|Function} hook
+ * @param {Config} current
+ * @param {Config} previous
+ * @returns {*}
+ */
+const evalHook = (path, hook, current, previous) => isFunction(hook) ? hook(path, current, previous) : hook;
+
+/**
+ * @class
+ */
+class ConfigBuilder {
+    /**
+     * @private
+     * @readonly
+     * @type {Config|ConfigList}
+     */
+    get config() {
+        if (!CONFIG.has(this)) {
+            CONFIG.set(this, new Config());
+        }
+
+        return CONFIG.get(this);
+    }
+
+    /**
+     * @readonly
+     * @type {Config}
+     */
+    get pendingConfig() {
+        if (!PENDING_CONFIG.has(this)) {
+            PENDING_CONFIG.set(this, new Config());
+        }
+
+        return PENDING_CONFIG.get(this);
+    }
+
+    /**
+     * @param {Function|Object|Object[]} value
+     * @returns {ConfigBuilder}
+     */
+    copyOf(value) {
+        CONFIG.set(this, ConfigFactory.createConfig(value));
+
+        return this;
+    }
+
+    /**
+     * @see {@link Config#merge}
+     * @param {...(Object|Function)} values
+     * @returns {ConfigBuilder}
+     */
+    merge(...values) {
+        this.pendingConfig.merge(...values);
+
+        return this;
+    }
+
+    /**
+     * @see {@link Config#defaults}
+     * @param {...(Object|Function)} values
+     * @returns {ConfigBuilder}
+     */
+    defaults(...values) {
+        this.pendingConfig.defaults(...values);
+
+        return this;
+    }
+
+    /**
+     * @see {@link Config#extend}
+     * @param {...(String|Object&lt;String,Function>|Object&lt;String,Function[]>)} values
+     * @returns {ConfigBuilder}
+     */
+    extend(...values) {
+        this.pendingConfig.extend(...values);
+
+        return this;
+    }
+
+    /**
+     * @param {Object&lt;String,Function>} [hooks]
+     * @returns {ConfigBuilder}
+     */
+    applyHooks(hooks = {}) {
+        for (const [path, hook] of Object.entries(hooks)) {
+            if (Array.isArray(this.config)) {
+                this.config.forEach(config => {
+                    if (config.has(path)) {
+                        const value = evalHook(path, hook, this.pendingConfig, config);
+
+                        this.pendingConfig.set(path, value);
+                    }
+                });
+            } else {
+                if (this.pendingConfig.has(path)) {
+                    const value = evalHook(path, hook, this.pendingConfig, this.config);
+
+                    this.pendingConfig.set(path, value);
+                }
+            }
+        }
+
+        return this;
+    }
+
+    /**
+     * @returns {Config|ConfigList}
+     */
+    build() {
+        let value;
+
+        if (Array.isArray(this.config)) {
+            value = this.config.map(x => x.clone().merge(this.pendingConfig).toObject());
+        } else {
+            value = this.config.clone().merge(this.pendingConfig).toObject();
+        }
+
+        const config = ConfigFactory.createConfig(value);
+
+        PENDING_CONFIG.delete(this);
+        CONFIG.set(this, config);
+
+        return config;
+    }
+}
+
+export default ConfigBuilder;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-webpack-config.html">webpack-config</a></li></ul><h3>Externals</h3><ul><li><a href="external-RecursiveIterator.html">RecursiveIterator</a></li></ul><h3>Classes</h3><ul><li><a href="Config.html">Config</a></li><li><a href="ConfigBuilder.html">ConfigBuilder</a></li><li><a href="ConfigCache.html">ConfigCache</a></li><li><a href="ConfigDependency.html">ConfigDependency</a></li><li><a href="ConfigDependencyIterator.html">ConfigDependencyIterator</a></li><li><a href="ConfigEnvironment.html">ConfigEnvironment</a></li><li><a href="ConfigFactory.html">ConfigFactory</a></li><li><a href="ConfigFinder.html">ConfigFinder</a></li><li><a href="ConfigList.html">ConfigList</a></li><li><a href="ConfigLoader.html">ConfigLoader</a></li><li><a href="ConfigNameResolver.html">ConfigNameResolver</a></li><li><a href="ConfigPathResolver.html">ConfigPathResolver</a></li><li><a href="ConfigPatternCache.html">ConfigPatternCache</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Fri Jun 10 2016 09:45:46 GMT+0000 (UTC)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
