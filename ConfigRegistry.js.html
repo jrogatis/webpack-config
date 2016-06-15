@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: ConfigEnvironment.js</title>
+    <title>JSDoc: Source: ConfigRegistry.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: ConfigEnvironment.js</h1>
+    <h1 class="page-title">Source: ConfigRegistry.js</h1>
 
     
 
@@ -26,62 +26,34 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import {
-    isFunction,
-    isUndefined
-} from 'lodash';
-import ConfigRegistry from './ConfigRegistry';
-
-/**
+            <pre class="prettyprint source linenums"><code>/**
  * @class
  * @extends {Map}
  */
-class ConfigEnvironment extends Map {
-    /**
-     * @param {...Object&lt;String,*>} values
-     * @returns {ConfigEnvironment}
-     */
-    setAll(...values) {
-        values.forEach(obj => {
-            for (let [key, value] of Object.entries(obj)) {
-                this.set(key, value);
-            }
-        });
-
-        return this;
-    }
-
+class ConfigRegistry extends Map {
     /**
      * @param {*} key
+     * @param {Function} valueLoader
      * @returns {*}
      */
-    valueOf(key) {
-        const value = this.get(key);
+    getOrSet(key, valueLoader) {
+        if (!this.has(key)) {
+            this.set(key, valueLoader());
+        }
 
-        return isFunction(value) ? value.call(this, this) : value;
-    }
-
-    /**
-     * @param {*} key
-     * @param {*} [defaultValue]
-     * @returns {*}
-     */
-    getOrDefault(key, defaultValue) {
-        const value = this.valueOf(key);
-
-        return isUndefined(value) ? defaultValue : value;
+        return this.get(key);
     }
 
     /**
      * @readonly
-     * @type {ConfigEnvironment}
+     * @type {ConfigRegistry}
      */
     static get INSTANCE() {
-        return ConfigRegistry.INSTANCE.getOrSet(this, () => new ConfigEnvironment(Object.entries(process.env)));
+        return new ConfigRegistry();
     }
 }
 
-export default ConfigEnvironment;
+export default ConfigRegistry;
 </code></pre>
         </article>
     </section>
