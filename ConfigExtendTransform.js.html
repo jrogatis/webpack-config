@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: ConfigTransform.js</title>
+    <title>JSDoc: Source: ConfigExtendTransform.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: ConfigTransform.js</h1>
+    <h1 class="page-title">Source: ConfigExtendTransform.js</h1>
 
     
 
@@ -46,14 +46,14 @@ const EXCLUDE_FIELDS = [
  * @param {Config} config
  * @returns {Config}
  */
-let DEFAULT_TRANSFORM = config => config;
+const DEFAULT_TRANSFORM = config => config;
 
 /**
  * @private
  * @param {Config} config
  * @returns {config}
  */
-let CLEANUP_TRANSFORM = config => {
+const CLEANUP_TRANSFORM = config => {
     EXCLUDE_FIELDS.forEach(function(name) {
         delete config[name];
     });
@@ -66,7 +66,7 @@ let CLEANUP_TRANSFORM = config => {
  * @extends {Map}
  * @private
  */
-class ConfigTransform extends Map {
+class ConfigExtendTransform extends Map {
     /**
      * @override
      * @param {*} key
@@ -74,7 +74,7 @@ class ConfigTransform extends Map {
      * @throws {ReferenceError}
      * @returns {Function[]}
      */
-    set(key, value = ConfigTransform.DEFAULT) {
+    set(key, value = ConfigExtendTransform.DEFAULT) {
         if (!isFunction(value)) {
             throw new ReferenceError(`\`${value}\` is not \`Function\``);
         }
@@ -85,14 +85,14 @@ class ConfigTransform extends Map {
             values.pop();
         }
 
-        values.push(value, ConfigTransform.CLEANUP);
+        values.push(value, ConfigExtendTransform.CLEANUP);
 
         return super.set(key, values);
     }
 
     /**
-     * @param {...(String|Object&lt;String,Function>|Object&lt;String,Function[]>)} values
-     * @returns {ConfigTransform}
+     * @param {...ConfigExtendOptions} values
+     * @returns {ConfigExtendTransform}
      */
     setAll(...values) {
         values.forEach(obj => {
@@ -113,6 +113,7 @@ class ConfigTransform extends Map {
     }
 
     /**
+     * @readonly
      * @type {Function}
      */
     static get DEFAULT() {
@@ -120,6 +121,7 @@ class ConfigTransform extends Map {
     }
 
     /**
+     * @readonly
      * @type {Function}
      */
     static get CLEANUP() {
@@ -127,15 +129,15 @@ class ConfigTransform extends Map {
     }
 
     /**
-     * @param {...(String|Object&lt;String,Function>|Object&lt;String,Function[]>)} values
-     * @returns {ConfigTransform}
+     * @param {...ConfigExtendOptions} values
+     * @returns {ConfigExtendTransform}
      */
     static initWith(...values) {
-        return new ConfigTransform().setAll(...values);
+        return new ConfigExtendTransform().setAll(...values);
     }
 }
 
-export default ConfigTransform;
+export default ConfigExtendTransform;
 </code></pre>
         </article>
     </section>
@@ -146,13 +148,13 @@ export default ConfigTransform;
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-webpack-config.html">webpack-config</a></li></ul><h3>Externals</h3><ul><li><a href="external-RecursiveIterator.html">RecursiveIterator</a></li></ul><h3>Classes</h3><ul><li><a href="Config.html">Config</a></li><li><a href="ConfigBuilder.html">ConfigBuilder</a></li><li><a href="ConfigCache.html">ConfigCache</a></li><li><a href="ConfigDependency.html">ConfigDependency</a></li><li><a href="ConfigDependencyIterator.html">ConfigDependencyIterator</a></li><li><a href="ConfigEnvironment.html">ConfigEnvironment</a></li><li><a href="ConfigFactory.html">ConfigFactory</a></li><li><a href="ConfigFinder.html">ConfigFinder</a></li><li><a href="ConfigList.html">ConfigList</a></li><li><a href="ConfigLoader.html">ConfigLoader</a></li><li><a href="ConfigNameResolver.html">ConfigNameResolver</a></li><li><a href="ConfigPathResolver.html">ConfigPathResolver</a></li><li><a href="ConfigPatternCache.html">ConfigPatternCache</a></li><li><a href="ConfigRegistry.html">ConfigRegistry</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-webpack-config.html">webpack-config</a></li></ul><h3>Externals</h3><ul><li><a href="external-RecursiveIterator.html">RecursiveIterator</a></li></ul><h3>Classes</h3><ul><li><a href="Config.html">Config</a></li><li><a href="ConfigBuilder.html">ConfigBuilder</a></li><li><a href="ConfigCache.html">ConfigCache</a></li><li><a href="ConfigDependency.html">ConfigDependency</a></li><li><a href="ConfigDependencyIterator.html">ConfigDependencyIterator</a></li><li><a href="ConfigEnvironment.html">ConfigEnvironment</a></li><li><a href="ConfigFactory.html">ConfigFactory</a></li><li><a href="ConfigFinder.html">ConfigFinder</a></li><li><a href="ConfigList.html">ConfigList</a></li><li><a href="ConfigLoader.html">ConfigLoader</a></li><li><a href="ConfigNameResolver.html">ConfigNameResolver</a></li><li><a href="ConfigPathResolver.html">ConfigPathResolver</a></li><li><a href="ConfigPatternCache.html">ConfigPatternCache</a></li><li><a href="ConfigRegistry.html">ConfigRegistry</a></li></ul><h3>Global</h3><ul><li><a href="global.html#ConfigTransform">ConfigTransform</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Mon Jul 18 2016 12:54:20 GMT+0000 (UTC)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Mon Jul 18 2016 14:19:03 GMT+0000 (UTC)
 </footer>
 
 <script> prettyPrint(); </script>

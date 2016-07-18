@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: ConfigDependency</title>
+    <title>JSDoc: Global</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: ConfigDependency</h1>
+    <h1 class="page-title">Global</h1>
 
     
 
@@ -28,9 +28,7 @@
 
 <header>
     
-        <h2>ConfigDependency</h2>
-        
-            <div class="class-description"><p>Supports <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Iteration_protocols">iteration protocols</a> via <a href="ConfigDependencyIterator.html">ConfigDependencyIterator</a></p></div>
+        <h2></h2>
         
     
 </header>
@@ -40,11 +38,70 @@
     
         
 
-    
-    <h2>Constructor</h2>
+        
+
+
+<dl class="details">
+
     
 
-    <h4 class="name" id="ConfigDependency"><span class="type-signature"></span>new ConfigDependency<span class="signature">(root, children)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+        
+    
+    </div>
+
+    
+
+    
+
+    
+
+     
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    <h4 class="name" id="ConfigTransform"><span class="type-signature"></span>ConfigTransform<span class="signature">(config)</span><span class="type-signature"> &rarr; {*}</span></h4>
 
     
 
@@ -83,36 +140,13 @@
 
         <tr>
             
-                <td class="name"><code>root</code></td>
+                <td class="name"><code>config</code></td>
             
 
             <td class="type">
             
                 
 <span class="param-type"><a href="Config.html">Config</a></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>children</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Array.&lt;<a href="ConfigDependency.html">ConfigDependency</a>></span>
 
 
             
@@ -163,7 +197,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="ConfigDependency.js.html">ConfigDependency.js</a>, <a href="ConfigDependency.js.html#line19">line 19</a>
+        <a href="Config.js.html">Config.js</a>, <a href="Config.js.html#line15">line 15</a>
     </li></ul></dd>
     
 
@@ -186,28 +220,36 @@
 
 
 
-
-
-
-    
-    </div>
-
-    
-
-    
-
-    
-
-     
-
-    
-
-    
-        <h3 class="subsection-title">Members</h3>
+<h5>Returns:</h5>
 
         
-            
-<h4 class="name" id="children"><span class="type-signature">(readonly) </span>children<span class="type-signature"> :Array.&lt;<a href="ConfigDependency.html">ConfigDependency</a>></span></h4>
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">*</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+    
+
+    
+        <h3 class="subsection-title">Type Definitions</h3>
+
+        
+                
+<h4 class="name" id="ConfigDefaultsOptions">ConfigDefaultsOptions</h4>
 
 
 
@@ -218,7 +260,10 @@
     <ul>
         <li>
             
-<span class="param-type">Array.&lt;<a href="ConfigDependency.html">ConfigDependency</a>></span>
+<span class="param-type">Object</span>
+|
+
+<span class="param-type"><a href="global.html#ConfigTransform">ConfigTransform</a></span>
 
 
         </li>
@@ -257,7 +302,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="ConfigDependency.js.html">ConfigDependency.js</a>, <a href="ConfigDependency.js.html#line42">line 42</a>
+        <a href="Config.js.html">Config.js</a>, <a href="Config.js.html#line22">line 22</a>
     </li></ul></dd>
     
 
@@ -273,9 +318,9 @@
 
 
 
-        
             
-<h4 class="name" id="root"><span class="type-signature">(readonly) </span>root<span class="type-signature"> :<a href="Config.html">Config</a></span></h4>
+                
+<h4 class="name" id="ConfigExtendOptions">ConfigExtendOptions</h4>
 
 
 
@@ -286,7 +331,13 @@
     <ul>
         <li>
             
-<span class="param-type"><a href="Config.html">Config</a></span>
+<span class="param-type">String</span>
+|
+
+<span class="param-type">Object.&lt;String, <a href="global.html#ConfigTransform">ConfigTransform</a>></span>
+|
+
+<span class="param-type">Object.&lt;String, Array.&lt;<a href="global.html#ConfigTransform">ConfigTransform</a>>></span>
 
 
         </li>
@@ -325,7 +376,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="ConfigDependency.js.html">ConfigDependency.js</a>, <a href="ConfigDependency.js.html#line34">line 34</a>
+        <a href="Config.js.html">Config.js</a>, <a href="Config.js.html#line30">line 30</a>
     </li></ul></dd>
     
 
@@ -341,11 +392,78 @@
 
 
 
-        
+            
+                
+<h4 class="name" id="ConfigMergeOptions">ConfigMergeOptions</h4>
+
+
+
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Object</span>
+|
+
+<span class="param-type"><a href="global.html#ConfigTransform">ConfigTransform</a></span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
     
 
     
 
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Config.js.html">Config.js</a>, <a href="Config.js.html#line26">line 26</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+            
     
 
     
