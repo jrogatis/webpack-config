@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: ConfigLoader.js</title>
+    <title>JSDoc: Source: container.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: ConfigLoader.js</h1>
+    <h1 class="page-title">Source: container.js</h1>
 
     
 
@@ -27,92 +27,64 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>import {
-    isString
-} from 'lodash';
+    Container,
+    Transient
+} from 'constitute';
+import Config from './Config';
+import ConfigCache from './ConfigCache';
+import ConfigEnvironment from './ConfigEnvironment';
+import ConfigPatternCache from './ConfigPatternCache';
+import ConfigNameResolver from './ConfigNameResolver';
+import ConfigPathResolver from './ConfigPathResolver';
+import ConfigLoader from './ConfigLoader';
+import ConfigFinder from './ConfigFinder';
 import ConfigFactory from './ConfigFactory';
+import ConfigBuilder from './ConfigBuilder';
+
+/**
+ * @param {*} Class
+ * @return {*}
+ */
+Container.prototype.proxyClass = function(Class) {
+    return () => this.constitute(Class);
+};
 
 /**
  * @private
- * @type {WeakMap}
+ * @type {Container}
  */
-const PATH_RESOLVER = new WeakMap();
+const container = new Container();
 
-/**
- * @private
- * @type {WeakMap}
- */
-const CACHE = new WeakMap();
+container.bindValue(ConfigEnvironment, new ConfigEnvironment(Object.entries(process.env)));
+container.bindClass(ConfigCache, ConfigCache, [
+    ConfigEnvironment
+]);
+container.bindValue(ConfigPatternCache, new ConfigPatternCache());
+container.bindClass(ConfigNameResolver, ConfigNameResolver, [
+    ConfigEnvironment,
+    ConfigPatternCache
+]);
+container.bindClass(ConfigPathResolver, ConfigPathResolver, [
+    ConfigNameResolver
+]);
+container.bindClass(ConfigLoader, ConfigLoader, [
+    ConfigPathResolver,
+    ConfigCache
+]);
+container.bindClass(ConfigFinder, ConfigFinder, [
+    ConfigPathResolver
+]);
+container.bindClass(ConfigFactory, ConfigFactory, [
+    ConfigLoader
+]);
+container.bindClass(Config, Config, Transient.with([
+    ConfigLoader
+]));
+container.bindClass(ConfigBuilder, ConfigBuilder, Transient.with([
+    ConfigFactory
+]));
 
-/**
- * @private
- * @type {WeakMap}
- */
-const FACTORY = new WeakMap();
-
-/**
- * @class
- */
-class ConfigLoader {
-    /**
-     * @constructor
-     * @param {ConfigPathResolver} pathResolver
-     * @param {ConfigCache} cache
-     */
-    constructor(pathResolver, cache) {
-        PATH_RESOLVER.set(this, pathResolver);
-        CACHE.set(this, cache);
-        FACTORY.set(this, new ConfigFactory(this));
-    }
-
-    /**
-     * @protected
-     * @readonly
-     * @type {ConfigPathResolver}
-     */
-    get pathResolver() {
-        return PATH_RESOLVER.get(this);
-    }
-
-    /**
-     * @protected
-     * @readonly
-     * @type {ConfigCache}
-     */
-    get cache() {
-        return CACHE.get(this);
-    }
-
-    /**
-     * @protected
-     * @readonly
-     * @type {ConfigFactory}
-     */
-    get factory() {
-        return FACTORY.get(this);
-    }
-
-    /**
-     * @param {String} filename
-     * @returns {Config|ConfigList}
-     */
-    loadConfig(filename) {
-        filename = this.pathResolver.resolve(filename);
-
-        let config = this.cache.get(filename);
-
-        if (config) {
-            config = this.factory.createConfig(config);
-        }
-
-        if (config &amp;&amp; !isString(config.filename)) {
-            config.filename = filename;
-        }
-
-        return config;
-    }
-}
-
-export default ConfigLoader;
+export default container;
 </code></pre>
         </article>
     </section>

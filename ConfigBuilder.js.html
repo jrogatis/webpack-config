@@ -29,8 +29,6 @@
             <pre class="prettyprint source linenums"><code>import {
     isFunction
 } from 'lodash';
-import Config from './Config';
-import ConfigFactory from './ConfigFactory';
 
 /**
  * @private
@@ -46,6 +44,12 @@ const PENDING_CONFIG = new WeakMap();
 
 /**
  * @private
+ * @type {WeakMap}
+ */
+const FACTORY = new WeakMap();
+
+/**
+ * @private
  * @param {String} path
  * @param {*|Function} hook
  * @param {Config} current
@@ -55,30 +59,33 @@ const PENDING_CONFIG = new WeakMap();
 const evalHook = (path, hook, current, previous) => isFunction(hook) ? hook(path, current, previous) : hook;
 
 /**
- * @private
- * @param {WeakMap} map
- * @param {*} context
- * @returns {Config}
- */
-const getOrSetConfig = (map, context) => {
-    if (!map.has(context)) {
-        map.set(context, new Config());
-    }
-
-    return map.get(context);
-};
-
-/**
  * @class
  */
 class ConfigBuilder {
+    /**
+     * @constructor
+     * @param {ConfigFactory} factory
+     */
+    constructor(factory) {
+        FACTORY.set(this, factory);
+    }
+
+    /**
+     * @private
+     * @readonly
+     * @type {ConfigFactory}
+     */
+    get factory() {
+        return FACTORY.get(this);
+    }
+
     /**
      * @private
      * @readonly
      * @type {Config|ConfigList}
      */
     get config() {
-        return getOrSetConfig(CONFIG, this);
+        return this.getOrSetConfig(CONFIG);
     }
 
     /**
@@ -86,7 +93,20 @@ class ConfigBuilder {
      * @type {Config}
      */
     get pendingConfig() {
-        return getOrSetConfig(PENDING_CONFIG, this);
+        return this.getOrSetConfig(PENDING_CONFIG);
+    }
+
+    /**
+     * @private
+     * @param {WeakMap} map
+     * @returns {Config}
+     */
+    getOrSetConfig(map) {
+        if (!map.has(this)) {
+            map.set(this, this.factory.createConfig({}));
+        }
+
+        return map.get(this);
     }
 
     /**
@@ -94,7 +114,7 @@ class ConfigBuilder {
      * @returns {ConfigBuilder}
      */
     copyOf(value) {
-        CONFIG.set(this, ConfigFactory.createConfig(value));
+        CONFIG.set(this, this.factory.createConfig(value));
 
         return this;
     }
@@ -170,7 +190,7 @@ class ConfigBuilder {
             value = this.config.clone().merge(this.pendingConfig).toObject();
         }
 
-        const config = ConfigFactory.createConfig(value);
+        const config = this.factory.createConfig(value);
 
         PENDING_CONFIG.delete(this);
         CONFIG.set(this, config);
@@ -190,13 +210,13 @@ export default ConfigBuilder;
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-webpack-config.html">webpack-config</a></li></ul><h3>Externals</h3><ul><li><a href="external-RecursiveIterator.html">RecursiveIterator</a></li></ul><h3>Classes</h3><ul><li><a href="Config.html">Config</a></li><li><a href="ConfigBuilder.html">ConfigBuilder</a></li><li><a href="ConfigCache.html">ConfigCache</a></li><li><a href="ConfigDependency.html">ConfigDependency</a></li><li><a href="ConfigDependencyIterator.html">ConfigDependencyIterator</a></li><li><a href="ConfigEnvironment.html">ConfigEnvironment</a></li><li><a href="ConfigFactory.html">ConfigFactory</a></li><li><a href="ConfigFinder.html">ConfigFinder</a></li><li><a href="ConfigList.html">ConfigList</a></li><li><a href="ConfigLoader.html">ConfigLoader</a></li><li><a href="ConfigNameResolver.html">ConfigNameResolver</a></li><li><a href="ConfigPathResolver.html">ConfigPathResolver</a></li><li><a href="ConfigPatternCache.html">ConfigPatternCache</a></li><li><a href="ConfigRegistry.html">ConfigRegistry</a></li></ul><h3>Global</h3><ul><li><a href="global.html#ConfigTransform">ConfigTransform</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-webpack-config.html">webpack-config</a></li></ul><h3>Externals</h3><ul><li><a href="external-RecursiveIterator.html">RecursiveIterator</a></li></ul><h3>Classes</h3><ul><li><a href="Config.html">Config</a></li><li><a href="ConfigBuilder.html">ConfigBuilder</a></li><li><a href="ConfigBuilderProxy.html">ConfigBuilderProxy</a></li><li><a href="ConfigCache.html">ConfigCache</a></li><li><a href="ConfigDependency.html">ConfigDependency</a></li><li><a href="ConfigDependencyIterator.html">ConfigDependencyIterator</a></li><li><a href="ConfigEnvironment.html">ConfigEnvironment</a></li><li><a href="ConfigFactory.html">ConfigFactory</a></li><li><a href="ConfigFinder.html">ConfigFinder</a></li><li><a href="ConfigList.html">ConfigList</a></li><li><a href="ConfigLoader.html">ConfigLoader</a></li><li><a href="ConfigNameResolver.html">ConfigNameResolver</a></li><li><a href="ConfigPathResolver.html">ConfigPathResolver</a></li><li><a href="ConfigPatternCache.html">ConfigPatternCache</a></li><li><a href="ConfigProxy.html">ConfigProxy</a></li></ul><h3>Global</h3><ul><li><a href="global.html#ConfigTransform">ConfigTransform</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Tue Aug 02 2016 14:34:49 GMT+0000 (UTC)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Thu Aug 04 2016 13:16:56 GMT+0000 (UTC)
 </footer>
 
 <script> prettyPrint(); </script>

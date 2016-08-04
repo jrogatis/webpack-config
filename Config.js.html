@@ -36,7 +36,6 @@
     get,
     has
 } from 'lodash';
-import ConfigLoader from './ConfigLoader';
 import ConfigExtendTransform from './ConfigExtendTransform';
 import ConfigDependency from './ConfigDependency';
 
@@ -67,6 +66,12 @@ const DEPENDENCY_TREE = 'DEPENDENCY_TREE';
 
 /**
  * @private
+ * @type {WeakMap}
+ */
+const LOADER = new WeakMap();
+
+/**
+ * @private
  * @param {Object|Function} value
  * @param {Config} context
  * @returns {*}
@@ -77,6 +82,23 @@ const evalValue = (value, context) => isFunction(value) ? value.call(context, co
  * @class
  */
 class Config {
+    /**
+     * @constructor
+     * @param {ConfigLoader} loader
+     */
+    constructor(loader) {
+        LOADER.set(this, loader);
+    }
+
+    /**
+     * @protected
+     * @readonly
+     * @type {ConfigLoader}
+     */
+    get loader() {
+        return LOADER.get(this);
+    }
+
     /**
      * @example
      * import Config from 'webpack-config';
@@ -126,8 +148,8 @@ class Config {
      * @returns {Config}
      */
     defaults(...values) {
-        for (let value of Object.values(values)) {
-            let properties = evalValue(value, this);
+        for (const value of Object.values(values)) {
+            const properties = evalValue(value, this);
 
             defaultsDeep(this, properties);
         }
@@ -157,8 +179,8 @@ class Config {
      * @returns {Config}
      */
     merge(...values) {
-        for (let value of Object.values(values)) {
-            let properties = evalValue(value, this);
+        for (const value of Object.values(values)) {
+            const properties = evalValue(value, this);
 
             mergeWith(this, properties, (x, y) => { // eslint-disable-line consistent-return
                 if (Array.isArray(x)) {
@@ -217,7 +239,7 @@ class Config {
         const map = ConfigExtendTransform.initWith(...values);
 
         for (const [key, value] of map.entries()) {
-            const config = ConfigLoader.INSTANCE.loadConfig(key);
+            const config = this.loader.loadConfig(key);
 
             if (config instanceof Config) {
                 this.dependencyTree.children.push(config.dependencyTree);
@@ -234,7 +256,7 @@ class Config {
                     }
 
                     if (!(prevConfig instanceof Config)) {
-                        prevConfig = Config.initWith(prevConfig);
+                        prevConfig = new Config(this.loader).merge(prevConfig);
                     }
                 });
 
@@ -263,7 +285,7 @@ class Config {
      * @returns {Config}
      */
     clone() {
-        return Config.initWith(this.toObject());
+        return new Config(this.loader).merge(this.toObject());
     }
 
     /**
@@ -380,15 +402,6 @@ class Config {
     }
 
     /**
-     * Initializes new {@link Config} with specific `values`
-     * @param {...Object} values
-     * @returns {Config}
-     */
-    static initWith(...values) {
-        return new Config().merge(...values);
-    }
-
-    /**
      * Returns `webpack.config.js`
      * @readonly
      * @type {String}
@@ -409,13 +422,13 @@ export default Config;
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-webpack-config.html">webpack-config</a></li></ul><h3>Externals</h3><ul><li><a href="external-RecursiveIterator.html">RecursiveIterator</a></li></ul><h3>Classes</h3><ul><li><a href="Config.html">Config</a></li><li><a href="ConfigBuilder.html">ConfigBuilder</a></li><li><a href="ConfigCache.html">ConfigCache</a></li><li><a href="ConfigDependency.html">ConfigDependency</a></li><li><a href="ConfigDependencyIterator.html">ConfigDependencyIterator</a></li><li><a href="ConfigEnvironment.html">ConfigEnvironment</a></li><li><a href="ConfigFactory.html">ConfigFactory</a></li><li><a href="ConfigFinder.html">ConfigFinder</a></li><li><a href="ConfigList.html">ConfigList</a></li><li><a href="ConfigLoader.html">ConfigLoader</a></li><li><a href="ConfigNameResolver.html">ConfigNameResolver</a></li><li><a href="ConfigPathResolver.html">ConfigPathResolver</a></li><li><a href="ConfigPatternCache.html">ConfigPatternCache</a></li><li><a href="ConfigRegistry.html">ConfigRegistry</a></li></ul><h3>Global</h3><ul><li><a href="global.html#ConfigTransform">ConfigTransform</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-webpack-config.html">webpack-config</a></li></ul><h3>Externals</h3><ul><li><a href="external-RecursiveIterator.html">RecursiveIterator</a></li></ul><h3>Classes</h3><ul><li><a href="Config.html">Config</a></li><li><a href="ConfigBuilder.html">ConfigBuilder</a></li><li><a href="ConfigBuilderProxy.html">ConfigBuilderProxy</a></li><li><a href="ConfigCache.html">ConfigCache</a></li><li><a href="ConfigDependency.html">ConfigDependency</a></li><li><a href="ConfigDependencyIterator.html">ConfigDependencyIterator</a></li><li><a href="ConfigEnvironment.html">ConfigEnvironment</a></li><li><a href="ConfigFactory.html">ConfigFactory</a></li><li><a href="ConfigFinder.html">ConfigFinder</a></li><li><a href="ConfigList.html">ConfigList</a></li><li><a href="ConfigLoader.html">ConfigLoader</a></li><li><a href="ConfigNameResolver.html">ConfigNameResolver</a></li><li><a href="ConfigPathResolver.html">ConfigPathResolver</a></li><li><a href="ConfigPatternCache.html">ConfigPatternCache</a></li><li><a href="ConfigProxy.html">ConfigProxy</a></li></ul><h3>Global</h3><ul><li><a href="global.html#ConfigTransform">ConfigTransform</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Tue Aug 02 2016 14:34:49 GMT+0000 (UTC)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Thu Aug 04 2016 13:16:56 GMT+0000 (UTC)
 </footer>
 
 <script> prettyPrint(); </script>

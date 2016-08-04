@@ -44,8 +44,8 @@
 
     <section>
         <article><p><a href="https://www.npmjs.org/package/webpack-config"><img src="http://img.shields.io/npm/v/webpack-config.svg?style=flat-square" alt="NPM version"></a>
-<a href="https://travis-ci.org/mdreizin/webpack-config"><img src="http://img.shields.io/travis/mdreizin/webpack-config/master.svg?style=flat-square" alt="Travis build status"></a>
-<a href="https://ci.appveyor.com/project/mdreizin/webpack-config/branch/master"><img src="https://img.shields.io/appveyor/ci/mdreizin/webpack-config/master.svg?style=flat-square" alt="AppVeyor build status"></a>
+<a href="https://travis-ci.org/mdreizin/webpack-config"><img src="http://img.shields.io/travis/mdreizin/webpack-config/develop.svg?style=flat-square" alt="Travis build status"></a>
+<a href="https://ci.appveyor.com/project/mdreizin/webpack-config/branch/develop"><img src="https://img.shields.io/appveyor/ci/mdreizin/webpack-config/develop.svg?style=flat-square" alt="AppVeyor build status"></a>
 <a href="https://codeclimate.com/github/mdreizin/webpack-config"><img src="https://img.shields.io/codeclimate/github/mdreizin/webpack-config.svg?style=flat-square" alt="Code Climate GPA"></a>
 <a href="https://codeclimate.com/github/mdreizin/webpack-config"><img src="https://img.shields.io/codeclimate/coverage/github/mdreizin/webpack-config.svg?style=flat-square" alt="Code Climate Coverage"></a>
 <a href="https://david-dm.org/mdreizin/webpack-config"><img src="https://img.shields.io/david/mdreizin/webpack-config.svg?style=flat-square" alt="Dependency Status"></a>
@@ -60,13 +60,16 @@
 <li>[x] Supports environment variables under <code>#extend()</code> method</li>
 <li>[x] Supports shareable configs</li>
 </ul>
+<h2 id="webpack-config-changelog">Changelog</h2>
+
+<p>Details changes for each release are documented in the <a href="https://github.com/mdreizin/webpack-config/releases">release notes</a> and also in the <a href="https://github.com/mdreizin/webpack-config/wiki/Changelog">wiki page</a>.</p>
 <h2 id="webpack-config-shareable-configs">Shareable Configs</h2>
 
 <p>You can publish your configs to <code>npm</code> using <code>webpack-config-</code> prefix for package name.</p>
 <p>When you call <code>#extend()</code> method you may omit that prefix:</p>
-<pre class="prettyprint source lang-javascript"><code>import WebpackConfig from 'webpack-config';
+<pre class="prettyprint source lang-javascript"><code>import Config from 'webpack-config';
 
-export default new WebpackConfig().extend(
+export default new Config().extend(
     'mdreizin/base',
     'mdreizin/css',
     'mdreizin/html',
@@ -75,12 +78,9 @@ export default new WebpackConfig().extend(
 );</code></pre><h2 id="webpack-config-samples">Samples</h2>
 
 <p><code>./webpack.config.js</code></p>
-<pre class="prettyprint source lang-javascript"><code>import {
-    Config,
-    ConfigEnvironment
-} from 'webpack-config';
+<pre class="prettyprint source lang-javascript"><code>import Config, { environment } from 'webpack-config';
 
-ConfigEnvironment.INSTANCE.setAll({
+environment.setAll({
     env: () => process.env.NODE_ENV
 });
 
@@ -211,13 +211,13 @@ export default new Config().extend({
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-webpack-config.html">webpack-config</a></li></ul><h3>Externals</h3><ul><li><a href="external-RecursiveIterator.html">RecursiveIterator</a></li></ul><h3>Classes</h3><ul><li><a href="Config.html">Config</a></li><li><a href="ConfigBuilder.html">ConfigBuilder</a></li><li><a href="ConfigCache.html">ConfigCache</a></li><li><a href="ConfigDependency.html">ConfigDependency</a></li><li><a href="ConfigDependencyIterator.html">ConfigDependencyIterator</a></li><li><a href="ConfigEnvironment.html">ConfigEnvironment</a></li><li><a href="ConfigFactory.html">ConfigFactory</a></li><li><a href="ConfigFinder.html">ConfigFinder</a></li><li><a href="ConfigList.html">ConfigList</a></li><li><a href="ConfigLoader.html">ConfigLoader</a></li><li><a href="ConfigNameResolver.html">ConfigNameResolver</a></li><li><a href="ConfigPathResolver.html">ConfigPathResolver</a></li><li><a href="ConfigPatternCache.html">ConfigPatternCache</a></li><li><a href="ConfigRegistry.html">ConfigRegistry</a></li></ul><h3>Global</h3><ul><li><a href="global.html#ConfigTransform">ConfigTransform</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-webpack-config.html">webpack-config</a></li></ul><h3>Externals</h3><ul><li><a href="external-RecursiveIterator.html">RecursiveIterator</a></li></ul><h3>Classes</h3><ul><li><a href="Config.html">Config</a></li><li><a href="ConfigBuilder.html">ConfigBuilder</a></li><li><a href="ConfigBuilderProxy.html">ConfigBuilderProxy</a></li><li><a href="ConfigCache.html">ConfigCache</a></li><li><a href="ConfigDependency.html">ConfigDependency</a></li><li><a href="ConfigDependencyIterator.html">ConfigDependencyIterator</a></li><li><a href="ConfigEnvironment.html">ConfigEnvironment</a></li><li><a href="ConfigFactory.html">ConfigFactory</a></li><li><a href="ConfigFinder.html">ConfigFinder</a></li><li><a href="ConfigList.html">ConfigList</a></li><li><a href="ConfigLoader.html">ConfigLoader</a></li><li><a href="ConfigNameResolver.html">ConfigNameResolver</a></li><li><a href="ConfigPathResolver.html">ConfigPathResolver</a></li><li><a href="ConfigPatternCache.html">ConfigPatternCache</a></li><li><a href="ConfigProxy.html">ConfigProxy</a></li></ul><h3>Global</h3><ul><li><a href="global.html#ConfigTransform">ConfigTransform</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Tue Aug 02 2016 14:34:49 GMT+0000 (UTC)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Thu Aug 04 2016 13:16:56 GMT+0000 (UTC)
 </footer>
 
 <script> prettyPrint(); </script>

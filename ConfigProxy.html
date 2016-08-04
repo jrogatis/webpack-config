@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: Config</title>
+    <title>JSDoc: Class: ConfigProxy</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: Config</h1>
+    <h1 class="page-title">Class: ConfigProxy</h1>
 
     
 
@@ -28,7 +28,7 @@
 
 <header>
     
-        <h2>Config</h2>
+        <h2>ConfigProxy</h2>
         
     
 </header>
@@ -40,12 +40,15 @@
 
     
 
-    <h4 class="name" id="Config"><span class="type-signature"></span>new Config<span class="signature">(loader)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="ConfigProxy"><span class="type-signature"></span>new ConfigProxy<span class="signature">()</span><span class="type-signature"></span></h4>
 
     
 
 
 
+<div class="description">
+    <p>Proxy class which automatically fills <a href="Config.html">Config</a> constructor dependencies</p>
+</div>
 
 
 
@@ -53,54 +56,6 @@
 
 
 
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>loader</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="ConfigLoader.html">ConfigLoader</a></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-    </tbody>
-</table>
 
 
 
@@ -136,7 +91,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Config.js.html">Config.js</a>, <a href="Config.js.html#line56">line 56</a>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line18">line 18</a>
     </li></ul></dd>
     
 
@@ -166,6 +121,17 @@
     </div>
 
     
+        <h3 class="subsection-title">Extends</h3>
+
+        
+
+
+    <ul>
+        <li><a href="Config.html">Config</a></li>
+    </ul>
+
+
+    
 
     
 
@@ -177,78 +143,6 @@
 
     
         <h3 class="subsection-title">Members</h3>
-
-        
-            
-<h4 class="name" id=".FILENAME"><span class="type-signature">(static, readonly) </span>FILENAME<span class="type-signature"> :String</span></h4>
-
-
-
-
-<div class="description">
-    <p>Returns <code>webpack.config.js</code></p>
-</div>
-
-
-
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">String</span>
-
-
-        </li>
-    </ul>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Config.js.html">Config.js</a>, <a href="Config.js.html#line381">line 381</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
 
         
             
@@ -283,6 +177,11 @@
 
     
 
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="Config.html#dependencyTree">Config#dependencyTree</a>
+    </li></ul></dd>
     
 
     
@@ -370,6 +269,11 @@ for (let {node} of config.dependencyTree) {
     
 
     
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="Config.html#loader">Config#loader</a>
+    </li></ul></dd>
+    
 
     
 
@@ -447,6 +351,11 @@ for (let {node} of config.dependencyTree) {
 
     
 
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="Config.html#clone">Config#clone</a>
+    </li></ul></dd>
     
 
     
@@ -623,6 +532,11 @@ console.log(config.clone());
     
 
     
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="Config.html#defaults">Config#defaults</a>
+    </li></ul></dd>
+    
 
     
 
@@ -794,6 +708,11 @@ export default new Config().defaults(() => {
 
     
 
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="Config.html#extend">Config#extend</a>
+    </li></ul></dd>
     
 
     
@@ -985,6 +904,11 @@ export default new Config().extend({
     
 
     
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="Config.html#get">Config#get</a>
+    </li></ul></dd>
+    
 
     
 
@@ -1145,6 +1069,11 @@ console.log(config.get('debug'));
 
     
 
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="Config.html#has">Config#has</a>
+    </li></ul></dd>
     
 
     
@@ -1319,6 +1248,11 @@ console.log(config.has('debug'));
     
 
     
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="Config.html#merge">Config#merge</a>
+    </li></ul></dd>
+    
 
     
 
@@ -1486,6 +1420,11 @@ export default new Config().merge(() => {
 
     
 
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="Config.html#remove">Config#remove</a>
+    </li></ul></dd>
     
 
     
@@ -1671,6 +1610,11 @@ console.log(config.get('debug'));
     
 
     
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="Config.html#set">Config#set</a>
+    </li></ul></dd>
+    
 
     
 
@@ -1779,6 +1723,11 @@ console.log(config.toObject());
     
 
     
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="Config.html#toJSON">Config#toJSON</a>
+    </li></ul></dd>
+    
 
     
 
@@ -1878,6 +1827,11 @@ console.log(config.toObject());
 
     
 
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="Config.html#toObject">Config#toObject</a>
+    </li></ul></dd>
     
 
     
