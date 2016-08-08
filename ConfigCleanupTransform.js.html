@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: ConfigList.js</title>
+    <title>JSDoc: Source: ConfigCleanupTransform.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: ConfigList.js</h1>
+    <h1 class="page-title">Source: ConfigCleanupTransform.js</h1>
 
     
 
@@ -27,12 +27,26 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>/**
- * @class
- * @extends {Array}
+ * @private
+ * @type {String[]}
  */
-class ConfigList extends Array {}
+const EXCLUDE_FIELDS = [
+    'filename',
+    'DEPENDENCY_TREE'
+];
 
-export default ConfigList;
+/**
+ * Removes system properties
+ * @param {Config} config
+ * @returns {Config}
+ */
+export default config => {
+    EXCLUDE_FIELDS.forEach(function(name) {
+        delete config[name];
+    });
+
+    return config;
+};
 </code></pre>
         </article>
     </section>

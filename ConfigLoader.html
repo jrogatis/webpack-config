@@ -40,7 +40,7 @@
 
     
 
-    <h4 class="name" id="ConfigLoader"><span class="type-signature"></span>new ConfigLoader<span class="signature">(pathResolver, cache)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="ConfigLoader"><span class="type-signature"></span>new ConfigLoader<span class="signature">(pathResolver, cache, factory)</span><span class="type-signature"></span></h4>
 
     
 
@@ -122,6 +122,29 @@
         </tr>
 
     
+
+        <tr>
+            
+                <td class="name"><code>factory</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="ConfigFactory.html">ConfigFactory</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
     </tbody>
 </table>
 
@@ -159,7 +182,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="ConfigLoader.js.html">ConfigLoader.js</a>, <a href="ConfigLoader.js.html#line27">line 27</a>
+        <a href="ConfigLoader.js.html">ConfigLoader.js</a>, <a href="ConfigLoader.js.html#line26">line 26</a>
     </li></ul></dd>
     
 
@@ -203,7 +226,7 @@
 
         
             
-<h4 class="name" id="cache"><span class="type-signature">(protected, readonly) </span>cache<span class="type-signature"> :<a href="ConfigCache.html">ConfigCache</a></span></h4>
+<h4 class="name" id="cache"><span class="type-signature">(readonly) </span>cache<span class="type-signature"> :<a href="ConfigCache.html">ConfigCache</a></span></h4>
 
 
 
@@ -253,7 +276,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="ConfigLoader.js.html">ConfigLoader.js</a>, <a href="ConfigLoader.js.html#line53">line 53</a>
+        <a href="ConfigLoader.js.html">ConfigLoader.js</a>, <a href="ConfigLoader.js.html#line51">line 51</a>
     </li></ul></dd>
     
 
@@ -271,7 +294,7 @@
 
         
             
-<h4 class="name" id="factory"><span class="type-signature">(protected, readonly) </span>factory<span class="type-signature"> :<a href="ConfigFactory.html">ConfigFactory</a></span></h4>
+<h4 class="name" id="factory"><span class="type-signature">(readonly) </span>factory<span class="type-signature"> :<a href="ConfigFactory.html">ConfigFactory</a></span></h4>
 
 
 
@@ -321,7 +344,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="ConfigLoader.js.html">ConfigLoader.js</a>, <a href="ConfigLoader.js.html#line62">line 62</a>
+        <a href="ConfigLoader.js.html">ConfigLoader.js</a>, <a href="ConfigLoader.js.html#line59">line 59</a>
     </li></ul></dd>
     
 
@@ -339,7 +362,7 @@
 
         
             
-<h4 class="name" id="pathResolver"><span class="type-signature">(protected, readonly) </span>pathResolver<span class="type-signature"> :<a href="ConfigPathResolver.html">ConfigPathResolver</a></span></h4>
+<h4 class="name" id="pathResolver"><span class="type-signature">(readonly) </span>pathResolver<span class="type-signature"> :<a href="ConfigPathResolver.html">ConfigPathResolver</a></span></h4>
 
 
 
@@ -389,7 +412,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="ConfigLoader.js.html">ConfigLoader.js</a>, <a href="ConfigLoader.js.html#line44">line 44</a>
+        <a href="ConfigLoader.js.html">ConfigLoader.js</a>, <a href="ConfigLoader.js.html#line43">line 43</a>
     </li></ul></dd>
     
 
@@ -512,7 +535,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="ConfigLoader.js.html">ConfigLoader.js</a>, <a href="ConfigLoader.js.html#line70">line 70</a>
+        <a href="ConfigLoader.js.html">ConfigLoader.js</a>, <a href="ConfigLoader.js.html#line67">line 67</a>
     </li></ul></dd>
     
 
@@ -575,13 +598,13 @@
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-webpack-config.html">webpack-config</a></li></ul><h3>Externals</h3><ul><li><a href="external-RecursiveIterator.html">RecursiveIterator</a></li></ul><h3>Classes</h3><ul><li><a href="Config.html">Config</a></li><li><a href="ConfigBuilder.html">ConfigBuilder</a></li><li><a href="ConfigBuilderProxy.html">ConfigBuilderProxy</a></li><li><a href="ConfigCache.html">ConfigCache</a></li><li><a href="ConfigDependency.html">ConfigDependency</a></li><li><a href="ConfigDependencyIterator.html">ConfigDependencyIterator</a></li><li><a href="ConfigEnvironment.html">ConfigEnvironment</a></li><li><a href="ConfigFactory.html">ConfigFactory</a></li><li><a href="ConfigFinder.html">ConfigFinder</a></li><li><a href="ConfigList.html">ConfigList</a></li><li><a href="ConfigLoader.html">ConfigLoader</a></li><li><a href="ConfigNameResolver.html">ConfigNameResolver</a></li><li><a href="ConfigPathResolver.html">ConfigPathResolver</a></li><li><a href="ConfigPatternCache.html">ConfigPatternCache</a></li><li><a href="ConfigProxy.html">ConfigProxy</a></li></ul><h3>Global</h3><ul><li><a href="global.html#ConfigTransform">ConfigTransform</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-webpack-config.html">webpack-config</a></li></ul><h3>Externals</h3><ul><li><a href="external-RecursiveIterator.html">RecursiveIterator</a></li></ul><h3>Classes</h3><ul><li><a href="Config.html">Config</a></li><li><a href="ConfigBuilder.html">ConfigBuilder</a></li><li><a href="ConfigBuilderProxy.html">ConfigBuilderProxy</a></li><li><a href="ConfigCache.html">ConfigCache</a></li><li><a href="ConfigCommand.html">ConfigCommand</a></li><li><a href="ConfigContainer.html">ConfigContainer</a></li><li><a href="ConfigDefaultsCommand.html">ConfigDefaultsCommand</a></li><li><a href="ConfigDependency.html">ConfigDependency</a></li><li><a href="ConfigDependencyIterator.html">ConfigDependencyIterator</a></li><li><a href="ConfigEnvironment.html">ConfigEnvironment</a></li><li><a href="ConfigExtendCommand.html">ConfigExtendCommand</a></li><li><a href="ConfigFactory.html">ConfigFactory</a></li><li><a href="ConfigFinder.html">ConfigFinder</a></li><li><a href="ConfigList.html">ConfigList</a></li><li><a href="ConfigLoader.html">ConfigLoader</a></li><li><a href="ConfigMergeCommand.html">ConfigMergeCommand</a></li><li><a href="ConfigNameResolver.html">ConfigNameResolver</a></li><li><a href="ConfigOptionsResolver.html">ConfigOptionsResolver</a></li><li><a href="ConfigPathResolver.html">ConfigPathResolver</a></li><li><a href="ConfigPatternCache.html">ConfigPatternCache</a></li><li><a href="ConfigProxy.html">ConfigProxy</a></li></ul><h3>Global</h3><ul><li><a href="global.html#ConfigTransform">ConfigTransform</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Fri Aug 05 2016 05:17:10 GMT+0000 (UTC)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Mon Aug 08 2016 08:05:15 GMT+0000 (UTC)
 </footer>
 
 <script> prettyPrint(); </script>

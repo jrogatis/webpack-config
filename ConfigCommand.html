@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: ConfigPathResolver</title>
+    <title>JSDoc: Class: ConfigCommand</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: ConfigPathResolver</h1>
+    <h1 class="page-title">Class: ConfigCommand</h1>
 
     
 
@@ -28,7 +28,7 @@
 
 <header>
     
-        <h2>ConfigPathResolver</h2>
+        <h2>ConfigCommand</h2>
         
     
 </header>
@@ -40,7 +40,7 @@
 
     
 
-    <h4 class="name" id="ConfigPathResolver"><span class="type-signature"></span>new ConfigPathResolver<span class="signature">(nameResolver, resolvers<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="ConfigCommand"><span class="type-signature"></span>new ConfigCommand<span class="signature">(optionsResolver)</span><span class="type-signature"></span></h4>
 
     
 
@@ -67,8 +67,6 @@
         <th>Type</th>
 
         
-        <th>Attributes</th>
-        
 
         
 
@@ -81,59 +79,18 @@
 
         <tr>
             
-                <td class="name"><code>nameResolver</code></td>
+                <td class="name"><code>optionsResolver</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type"><a href="ConfigNameResolver.html">ConfigNameResolver</a></span>
+<span class="param-type"><a href="ConfigOptionsResolver.html">ConfigOptionsResolver</a></span>
 
 
             
             </td>
 
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>resolvers</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Array.&lt;function()></span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
             
 
             
@@ -179,7 +136,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="ConfigPathResolver.js.html">ConfigPathResolver.js</a>, <a href="ConfigPathResolver.js.html#line71">line 71</a>
+        <a href="ConfigCommand.js.html">ConfigCommand.js</a>, <a href="ConfigCommand.js.html#line10">line 10</a>
     </li></ul></dd>
     
 
@@ -223,7 +180,7 @@
 
         
             
-<h4 class="name" id="nameResolver"><span class="type-signature">(protected, readonly) </span>nameResolver<span class="type-signature"> :<a href="ConfigNameResolver.html">ConfigNameResolver</a></span></h4>
+<h4 class="name" id="optionsResolver"><span class="type-signature"></span>optionsResolver<span class="type-signature"> :<a href="ConfigOptionsResolver.html">ConfigOptionsResolver</a></span></h4>
 
 
 
@@ -234,7 +191,7 @@
     <ul>
         <li>
             
-<span class="param-type"><a href="ConfigNameResolver.html">ConfigNameResolver</a></span>
+<span class="param-type"><a href="ConfigOptionsResolver.html">ConfigOptionsResolver</a></span>
 
 
         </li>
@@ -273,75 +230,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="ConfigPathResolver.js.html">ConfigPathResolver.js</a>, <a href="ConfigPathResolver.js.html#line87">line 87</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-        
-            
-<h4 class="name" id="resolvers"><span class="type-signature">(protected, readonly) </span>resolvers<span class="type-signature"> :Array.&lt;function()></span></h4>
-
-
-
-
-
-
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">Array.&lt;function()></span>
-
-
-        </li>
-    </ul>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="ConfigPathResolver.js.html">ConfigPathResolver.js</a>, <a href="ConfigPathResolver.js.html#line96">line 96</a>
+        <a href="ConfigCommand.js.html">ConfigCommand.js</a>, <a href="ConfigCommand.js.html#line30">line 30</a>
     </li></ul></dd>
     
 
@@ -368,7 +257,7 @@
 
     
 
-    <h4 class="name" id="resolve"><span class="type-signature"></span>resolve<span class="signature">(value)</span><span class="type-signature"> &rarr; {String}</span></h4>
+    <h4 class="name" id="execute"><span class="type-signature">(abstract) </span>execute<span class="signature">(config, options)</span><span class="type-signature"> &rarr; {void}</span></h4>
 
     
 
@@ -407,13 +296,36 @@
 
         <tr>
             
-                <td class="name"><code>value</code></td>
+                <td class="name"><code>config</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">String</span>
+<span class="param-type"><a href="Config.html">Config</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#ConfigOptions">ConfigOptions</a></span>
 
 
             
@@ -464,7 +376,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="ConfigPathResolver.js.html">ConfigPathResolver.js</a>, <a href="ConfigPathResolver.js.html#line104">line 104</a>
+        <a href="ConfigCommand.js.html">ConfigCommand.js</a>, <a href="ConfigCommand.js.html#line25">line 25</a>
     </li></ul></dd>
     
 
@@ -498,7 +410,7 @@
     </dt>
     <dd>
         
-<span class="param-type">String</span>
+<span class="param-type">void</span>
 
 
     </dd>

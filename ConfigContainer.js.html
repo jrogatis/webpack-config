@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: container.js</title>
+    <title>JSDoc: Source: ConfigContainer.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: container.js</h1>
+    <h1 class="page-title">Source: ConfigContainer.js</h1>
 
     
 
@@ -40,51 +40,112 @@ import ConfigLoader from './ConfigLoader';
 import ConfigFinder from './ConfigFinder';
 import ConfigFactory from './ConfigFactory';
 import ConfigBuilder from './ConfigBuilder';
-
-/**
- * @param {*} Class
- * @return {*}
- */
-Container.prototype.proxyClass = function(Class) {
-    return () => this.constitute(Class);
-};
+import ConfigOptionsResolver from './ConfigOptionsResolver';
+import ConfigDefaultsCommand from './ConfigDefaultsCommand';
+import ConfigMergeCommand from './ConfigMergeCommand';
+import ConfigExtendCommand from './ConfigExtendCommand';
 
 /**
  * @private
- * @type {Container}
+ * @type {WeakMap}
  */
-const container = new Container();
+const CONTAINER = new WeakMap();
 
-container.bindValue(ConfigEnvironment, new ConfigEnvironment(Object.entries(process.env)));
-container.bindClass(ConfigCache, ConfigCache, [
-    ConfigEnvironment
-]);
-container.bindValue(ConfigPatternCache, new ConfigPatternCache());
-container.bindClass(ConfigNameResolver, ConfigNameResolver, [
-    ConfigEnvironment,
-    ConfigPatternCache
-]);
-container.bindClass(ConfigPathResolver, ConfigPathResolver, [
-    ConfigNameResolver
-]);
-container.bindClass(ConfigLoader, ConfigLoader, [
-    ConfigPathResolver,
-    ConfigCache
-]);
-container.bindClass(ConfigFinder, ConfigFinder, [
-    ConfigPathResolver
-]);
-container.bindClass(ConfigFactory, ConfigFactory, [
-    ConfigLoader
-]);
-container.bindClass(Config, Config, Transient.with([
-    ConfigLoader
-]));
-container.bindClass(ConfigBuilder, ConfigBuilder, Transient.with([
-    ConfigFactory
-]));
+/**
+ * @class
+ */
+class ConfigContainer {
+    /**
+     * @constructor
+     */
+    constructor() {
+        CONTAINER.set(this, new Container());
 
-export default container;
+        this.setUp();
+    }
+
+    /**
+     * @protected
+     * @type {Container}
+     */
+    get container() {
+        return CONTAINER.get(this);
+    }
+
+    /**
+     * @protected
+     * @returns {void}
+     */
+    setUp() {
+        const container = this.container;
+
+        container.bindValue(ConfigContainer, this);
+        container.bindValue(ConfigEnvironment, new ConfigEnvironment(Object.entries(process.env)));
+        container.bindClass(ConfigCache, ConfigCache, [
+            ConfigEnvironment
+        ]);
+        container.bindValue(ConfigPatternCache, new ConfigPatternCache());
+        container.bindClass(ConfigNameResolver, ConfigNameResolver, [
+            ConfigEnvironment,
+            ConfigPatternCache
+        ]);
+        container.bindClass(ConfigPathResolver, ConfigPathResolver, [
+            ConfigNameResolver
+        ]);
+        container.bindClass(ConfigLoader, ConfigLoader, [
+            ConfigPathResolver,
+            ConfigCache,
+            ConfigFactory
+        ]);
+        container.bindClass(ConfigFinder, ConfigFinder, [
+            ConfigPathResolver
+        ]);
+        container.bindClass(ConfigFactory, ConfigFactory, [
+            ConfigContainer
+        ]);
+        container.bindClass(Config, Config, Transient.with([
+            ConfigFactory,
+            ConfigDefaultsCommand,
+            ConfigMergeCommand,
+            ConfigExtendCommand
+        ]));
+        container.bindClass(ConfigBuilder, ConfigBuilder, Transient.with([
+            ConfigFactory
+        ]));
+        container.bindClass(ConfigOptionsResolver, ConfigOptionsResolver, [
+            ConfigNameResolver
+        ]);
+        container.bindClass(ConfigDefaultsCommand, ConfigDefaultsCommand, [
+            ConfigOptionsResolver
+        ]);
+        container.bindClass(ConfigMergeCommand, ConfigMergeCommand, [
+            ConfigOptionsResolver
+        ]);
+        container.bindClass(ConfigExtendCommand, ConfigExtendCommand, Transient.with([
+            ConfigOptionsResolver,
+            ConfigLoader,
+            ConfigFactory
+        ]));
+    }
+
+    /**
+     * @param {*} T
+     * @returns {*}
+     */
+    resolve(T) {
+        return this.container.constitute(T);
+    }
+
+    /**
+     * @param {*} T
+     * @returns {Function}
+     */
+    proxy(T) {
+        return () => this.resolve(T);
+    }
+}
+
+export default ConfigContainer;
 </code></pre>
         </article>
     </section>

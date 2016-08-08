@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: ConfigPatternCache</title>
+    <title>JSDoc: Class: ConfigExtendCommand</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: ConfigPatternCache</h1>
+    <h1 class="page-title">Class: ConfigExtendCommand</h1>
 
     
 
@@ -28,7 +28,7 @@
 
 <header>
     
-        <h2>ConfigPatternCache</h2>
+        <h2>ConfigExtendCommand</h2>
         
     
 </header>
@@ -40,7 +40,7 @@
 
     
 
-    <h4 class="name" id="ConfigPatternCache"><span class="type-signature"></span>new ConfigPatternCache<span class="signature">(interpolate<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="ConfigExtendCommand"><span class="type-signature"></span>new ConfigExtendCommand<span class="signature">(optionsResolver, loader, factory)</span><span class="type-signature"></span></h4>
 
     
 
@@ -67,11 +67,7 @@
         <th>Type</th>
 
         
-        <th>Attributes</th>
-        
 
-        
-        <th>Default</th>
         
 
         <th class="last">Description</th>
@@ -83,36 +79,66 @@
 
         <tr>
             
-                <td class="name"><code>interpolate</code></td>
+                <td class="name"><code>optionsResolver</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">RegExp</span>
+<span class="param-type"><a href="ConfigOptionsResolver.html">ConfigOptionsResolver</a></span>
 
 
             
             </td>
 
             
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
 
-                
+            
 
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>loader</code></td>
+            
+
+            <td class="type">
+            
                 
-                </td>
+<span class="param-type"><a href="ConfigLoader.html">ConfigLoader</a></span>
+
+
+            
+            </td>
+
             
 
             
-                <td class="default">
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>factory</code></td>
+            
+
+            <td class="type">
+            
                 
-                    /\[([\s\S]+?)]/g
-                
-                </td>
+<span class="param-type"><a href="ConfigFactory.html">ConfigFactory</a></span>
+
+
+            
+            </td>
+
+            
+
             
 
             <td class="description last"></td>
@@ -156,7 +182,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="ConfigPatternCache.js.html">ConfigPatternCache.js</a>, <a href="ConfigPatternCache.js.html#line21">line 21</a>
+        <a href="ConfigExtendCommand.js.html">ConfigExtendCommand.js</a>, <a href="ConfigExtendCommand.js.html#line34">line 34</a>
     </li></ul></dd>
     
 
@@ -192,7 +218,7 @@
 
 
     <ul>
-        <li>Map</li>
+        <li><a href="ConfigCommand.html">ConfigCommand</a></li>
     </ul>
 
 
@@ -211,7 +237,7 @@
 
         
             
-<h4 class="name" id="interpolate"><span class="type-signature"></span>interpolate<span class="type-signature"> :RegExp</span></h4>
+<h4 class="name" id="factory"><span class="type-signature">(readonly) </span>factory<span class="type-signature"> :<a href="ConfigFactory.html">ConfigFactory</a></span></h4>
 
 
 
@@ -222,7 +248,7 @@
     <ul>
         <li>
             
-<span class="param-type">RegExp</span>
+<span class="param-type"><a href="ConfigFactory.html">ConfigFactory</a></span>
 
 
         </li>
@@ -261,7 +287,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="ConfigPatternCache.js.html">ConfigPatternCache.js</a>, <a href="ConfigPatternCache.js.html#line35">line 35</a>
+        <a href="ConfigExtendCommand.js.html">ConfigExtendCommand.js</a>, <a href="ConfigExtendCommand.js.html#line60">line 60</a>
     </li></ul></dd>
     
 
@@ -279,12 +305,22 @@
 
         
             
-<h4 class="name" id="interpolate"><span class="type-signature"></span>interpolate<span class="type-signature"></span></h4>
+<h4 class="name" id="loader"><span class="type-signature">(readonly) </span>loader<span class="type-signature"> :<a href="ConfigLoader.html">ConfigLoader</a></span></h4>
 
 
 
 
 
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><a href="ConfigLoader.html">ConfigLoader</a></span>
+
+
+        </li>
+    </ul>
 
 
 
@@ -319,7 +355,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="ConfigPatternCache.js.html">ConfigPatternCache.js</a>, <a href="ConfigPatternCache.js.html#line48">line 48</a>
+        <a href="ConfigExtendCommand.js.html">ConfigExtendCommand.js</a>, <a href="ConfigExtendCommand.js.html#line52">line 52</a>
     </li></ul></dd>
     
 
@@ -334,13 +370,77 @@
 
 
 
-    <h5>Example</h5>
-    
-    <pre class="prettyprint"><code>import {
-  patternCache
-} from 'webpack-config';
 
-patternCache.interpolate = /{([\s\S]+?)}/g;</code></pre>
+        
+            
+<h4 class="name" id="optionsResolver"><span class="type-signature"></span>optionsResolver<span class="type-signature"> :<a href="ConfigOptionsResolver.html">ConfigOptionsResolver</a></span></h4>
+
+
+
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><a href="ConfigOptionsResolver.html">ConfigOptionsResolver</a></span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="ConfigCommand.html#optionsResolver">ConfigCommand#optionsResolver</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="ConfigCommand.js.html">ConfigCommand.js</a>, <a href="ConfigCommand.js.html#line30">line 30</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
 
 
 
@@ -355,7 +455,7 @@ patternCache.interpolate = /{([\s\S]+?)}/g;</code></pre>
 
     
 
-    <h4 class="name" id="compile"><span class="type-signature"></span>compile<span class="signature">(value)</span><span class="type-signature"> &rarr; {function}</span></h4>
+    <h4 class="name" id=".normalizeOptions"><span class="type-signature">(static) </span>normalizeOptions<span class="signature">(options)</span><span class="type-signature"> &rarr; {Array.&lt;<a href="global.html#ConfigExtendOptions">ConfigExtendOptions</a>>}</span></h4>
 
     
 
@@ -394,13 +494,13 @@ patternCache.interpolate = /{([\s\S]+?)}/g;</code></pre>
 
         <tr>
             
-                <td class="name"><code>value</code></td>
+                <td class="name"><code>options</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">String</span>
+<span class="param-type"><a href="global.html#ConfigExtendPossibleOptions">ConfigExtendPossibleOptions</a></span>
 
 
             
@@ -451,7 +551,7 @@ patternCache.interpolate = /{([\s\S]+?)}/g;</code></pre>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="ConfigPatternCache.js.html">ConfigPatternCache.js</a>, <a href="ConfigPatternCache.js.html#line89">line 89</a>
+        <a href="ConfigExtendCommand.js.html">ConfigExtendCommand.js</a>, <a href="ConfigExtendCommand.js.html#line104">line 104</a>
     </li></ul></dd>
     
 
@@ -485,7 +585,7 @@ patternCache.interpolate = /{([\s\S]+?)}/g;</code></pre>
     </dt>
     <dd>
         
-<span class="param-type">function</span>
+<span class="param-type">Array.&lt;<a href="global.html#ConfigExtendOptions">ConfigExtendOptions</a>></span>
 
 
     </dd>
@@ -500,7 +600,7 @@ patternCache.interpolate = /{([\s\S]+?)}/g;</code></pre>
 
     
 
-    <h4 class="name" id="eval"><span class="type-signature"></span>eval<span class="signature">(value, options)</span><span class="type-signature"> &rarr; {String}</span></h4>
+    <h4 class="name" id="execute"><span class="type-signature"></span>execute<span class="signature">(config, options)</span><span class="type-signature"> &rarr; {void}</span></h4>
 
     
 
@@ -539,13 +639,13 @@ patternCache.interpolate = /{([\s\S]+?)}/g;</code></pre>
 
         <tr>
             
-                <td class="name"><code>value</code></td>
+                <td class="name"><code>config</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">String</span>
+<span class="param-type"><a href="Config.html">Config</a></span>
 
 
             
@@ -568,7 +668,7 @@ patternCache.interpolate = /{([\s\S]+?)}/g;</code></pre>
             <td class="type">
             
                 
-<span class="param-type">Object</span>
+<span class="param-type"><a href="global.html#ConfigOptions">ConfigOptions</a></span>
 
 
             
@@ -599,6 +699,11 @@ patternCache.interpolate = /{([\s\S]+?)}/g;</code></pre>
     
 
     
+    <dt class="tag-overrides">Overrides:</dt>
+    <dd class="tag-overrides"><ul class="dummy"><li>
+        <a href="ConfigCommand.html#execute">ConfigCommand#execute</a>
+    </li></ul></dd>
+    
 
     
 
@@ -619,7 +724,7 @@ patternCache.interpolate = /{([\s\S]+?)}/g;</code></pre>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="ConfigPatternCache.js.html">ConfigPatternCache.js</a>, <a href="ConfigPatternCache.js.html#line79">line 79</a>
+        <a href="ConfigCommand.js.html">ConfigCommand.js</a>, <a href="ConfigCommand.js.html#line25">line 25</a>
     </li></ul></dd>
     
 
@@ -653,320 +758,7 @@ patternCache.interpolate = /{([\s\S]+?)}/g;</code></pre>
     </dt>
     <dd>
         
-<span class="param-type">String</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="getOrSet"><span class="type-signature"></span>getOrSet<span class="signature">(key)</span><span class="type-signature"> &rarr; {RegExp}</span></h4>
-
-    
-
-
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>key</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">*</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="ConfigPatternCache.js.html">ConfigPatternCache.js</a>, <a href="ConfigPatternCache.js.html#line56">line 56</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">RegExp</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="set"><span class="type-signature"></span>set<span class="signature">(key, value)</span><span class="type-signature"> &rarr; {RegExp}</span></h4>
-
-    
-
-
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>key</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">*</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>value</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="ConfigPatternCache.js.html">ConfigPatternCache.js</a>, <a href="ConfigPatternCache.js.html#line70">line 70</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">RegExp</span>
+<span class="param-type">void</span>
 
 
     </dd>

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: ConfigList.js</title>
+    <title>JSDoc: Source: ConfigCommand.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: ConfigList.js</h1>
+    <h1 class="page-title">Source: ConfigCommand.js</h1>
 
     
 
@@ -27,12 +27,40 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>/**
- * @class
- * @extends {Array}
+ * @private
+ * @type {WeakMap}
  */
-class ConfigList extends Array {}
+const OPTIONS_RESOLVER = new WeakMap();
 
-export default ConfigList;
+/**
+ * @class
+ */
+class ConfigCommand {
+    /**
+     * @constructor
+     * @param {ConfigOptionsResolver} optionsResolver
+     */
+    constructor(optionsResolver) {
+        OPTIONS_RESOLVER.set(this, optionsResolver);
+    }
+
+    /**
+     * @abstract
+     * @param {Config} config
+     * @param {ConfigOptions} options
+     * @returns {void}
+     */
+    execute(config, options) {} // eslint-disable-line no-unused-vars
+
+    /**
+     * @type {ConfigOptionsResolver}
+     */
+    get optionsResolver() {
+        return OPTIONS_RESOLVER.get(this);
+    }
+}
+
+export default ConfigCommand;
 </code></pre>
         </article>
     </section>

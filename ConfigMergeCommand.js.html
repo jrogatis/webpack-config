@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: ConfigList.js</title>
+    <title>JSDoc: Source: ConfigMergeCommand.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: ConfigList.js</h1>
+    <h1 class="page-title">Source: ConfigMergeCommand.js</h1>
 
     
 
@@ -26,13 +26,31 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>/**
- * @class
- * @extends {Array}
- */
-class ConfigList extends Array {}
+            <pre class="prettyprint source linenums"><code>import {
+    mergeWith
+} from 'lodash';
+import ConfigCommand from './ConfigCommand';
 
-export default ConfigList;
+/**
+ * @class
+ * @extends {ConfigCommand}
+ */
+class ConfigMergeCommand extends ConfigCommand {
+    /**
+     * @override
+     */
+    execute(config, options) {
+        const value = this.optionsResolver.resolve(config, options);
+
+        mergeWith(config, value, (x, y) => { // eslint-disable-line consistent-return
+            if (Array.isArray(x)) {
+                return x.concat(y);
+            }
+        });
+    }
+}
+
+export default ConfigMergeCommand;
 </code></pre>
         </article>
     </section>

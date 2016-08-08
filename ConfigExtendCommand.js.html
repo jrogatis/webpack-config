@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: ConfigExtendCommand.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: ConfigExtendCommand.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import {
+    isObject,
+    isString
+} from 'lodash';
+import Config from './Config';
+import ConfigCommand from './ConfigCommand';
+import DEFAULT_TRANSFORM from './ConfigDefaultTransform';
+import CLEANUP_TRANSFORM from './ConfigCleanupTransform';
+
+/**
+ * @typedef {Object&lt;String,ConfigTransform[]>} ConfigExtendOptions
+ */
+
+/**
+ * @typedef {String|Object&lt;String,ConfigTransform>|ConfigExtendOptions} ConfigExtendPossibleOptions
+ */
+
+/**
+ * @private
+ * @type {WeakMap}
+ */
+const LOADER = new WeakMap();
+
+/**
+ * @private
+ * @type {WeakMap}
+ */
+const FACTORY = new WeakMap();
+
+/**
+ * @class
+ * @extends {ConfigCommand}
+ */
+class ConfigExtendCommand extends ConfigCommand {
+    /**
+     * @constructor
+     * @param {ConfigOptionsResolver} optionsResolver
+     * @param {ConfigLoader} loader
+     * @param {ConfigFactory} factory
+     */
+    constructor(optionsResolver, loader, factory) {
+        super(optionsResolver);
+
+        LOADER.set(this, loader);
+        FACTORY.set(this, factory);
+    }
+
+    /**
+     * @readonly
+     * @type {ConfigLoader}
+     */
+    get loader() {
+        return LOADER.get(this);
+    }
+
+    /**
+     * @readonly
+     * @type {ConfigFactory}
+     */
+    get factory() {
+        return FACTORY.get(this);
+    }
+
+    /**
+     * @override
+     */
+    execute(config, options) {
+        const normalizedOptions = ConfigExtendCommand.normalizeOptions(options);
+
+        normalizedOptions.forEach(value => {
+            const { filename, transforms } = this.optionsResolver.resolve(config, value);
+            const pendingConfig = this.loader.loadConfig(filename);
+
+            if (pendingConfig instanceof Config) {
+                config.dependencyTree.children.push(pendingConfig.dependencyTree);
+
+                let prevConfig = pendingConfig.clone();
+
+                transforms.forEach(transform => {
+                    const currConfig = transform.call(config, prevConfig);
+
+                    if (!isObject(currConfig)) {
+                        prevConfig = {};
+                    } else {
+                        prevConfig = currConfig;
+                    }
+
+                    if (!(prevConfig instanceof Config)) {
+                        prevConfig = this.factory.createConfig({}).merge(prevConfig);
+                    }
+                });
+
+                if (prevConfig instanceof Config) {
+                    config.merge(prevConfig.toObject());
+                }
+            }
+        });
+    }
+
+    /**
+     * @param {ConfigExtendPossibleOptions} options
+     * @returns {ConfigExtendOptions[]}
+     */
+    static normalizeOptions(options) {
+        let normalizedOptions = [];
+
+        if (isString(options)) {
+            normalizedOptions = [{
+                filename: options,
+                transforms: [
+                    DEFAULT_TRANSFORM,
+                    CLEANUP_TRANSFORM
+                ]
+            }];
+        } else if (isObject(options)) {
+            for (const [filename, transform] of Object.entries(options)) {
+                const transforms = Array.isArray(transform) ? transform : [transform];
+
+                normalizedOptions.push({
+                    filename,
+                    transforms: [
+                        ...transforms,
+                        CLEANUP_TRANSFORM
+                    ]
+                });
+            }
+        }
+
+        return normalizedOptions;
+    }
+}
+
+export default ConfigExtendCommand;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-webpack-config.html">webpack-config</a></li></ul><h3>Externals</h3><ul><li><a href="external-RecursiveIterator.html">RecursiveIterator</a></li></ul><h3>Classes</h3><ul><li><a href="Config.html">Config</a></li><li><a href="ConfigBuilder.html">ConfigBuilder</a></li><li><a href="ConfigBuilderProxy.html">ConfigBuilderProxy</a></li><li><a href="ConfigCache.html">ConfigCache</a></li><li><a href="ConfigCommand.html">ConfigCommand</a></li><li><a href="ConfigContainer.html">ConfigContainer</a></li><li><a href="ConfigDefaultsCommand.html">ConfigDefaultsCommand</a></li><li><a href="ConfigDependency.html">ConfigDependency</a></li><li><a href="ConfigDependencyIterator.html">ConfigDependencyIterator</a></li><li><a href="ConfigEnvironment.html">ConfigEnvironment</a></li><li><a href="ConfigExtendCommand.html">ConfigExtendCommand</a></li><li><a href="ConfigFactory.html">ConfigFactory</a></li><li><a href="ConfigFinder.html">ConfigFinder</a></li><li><a href="ConfigList.html">ConfigList</a></li><li><a href="ConfigLoader.html">ConfigLoader</a></li><li><a href="ConfigMergeCommand.html">ConfigMergeCommand</a></li><li><a href="ConfigNameResolver.html">ConfigNameResolver</a></li><li><a href="ConfigOptionsResolver.html">ConfigOptionsResolver</a></li><li><a href="ConfigPathResolver.html">ConfigPathResolver</a></li><li><a href="ConfigPatternCache.html">ConfigPatternCache</a></li><li><a href="ConfigProxy.html">ConfigProxy</a></li></ul><h3>Global</h3><ul><li><a href="global.html#ConfigTransform">ConfigTransform</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Mon Aug 08 2016 08:05:15 GMT+0000 (UTC)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

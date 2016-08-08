@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: ConfigPathResolver</title>
+    <title>JSDoc: Class: ConfigOptionsResolver</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: ConfigPathResolver</h1>
+    <h1 class="page-title">Class: ConfigOptionsResolver</h1>
 
     
 
@@ -28,7 +28,7 @@
 
 <header>
     
-        <h2>ConfigPathResolver</h2>
+        <h2>ConfigOptionsResolver</h2>
         
     
 </header>
@@ -40,7 +40,7 @@
 
     
 
-    <h4 class="name" id="ConfigPathResolver"><span class="type-signature"></span>new ConfigPathResolver<span class="signature">(nameResolver, resolvers<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="ConfigOptionsResolver"><span class="type-signature"></span>new ConfigOptionsResolver<span class="signature">(nameResolver)</span><span class="type-signature"></span></h4>
 
     
 
@@ -67,8 +67,6 @@
         <th>Type</th>
 
         
-        <th>Attributes</th>
-        
 
         
 
@@ -93,47 +91,6 @@
             
             </td>
 
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>resolvers</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Array.&lt;function()></span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
             
 
             
@@ -179,7 +136,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="ConfigPathResolver.js.html">ConfigPathResolver.js</a>, <a href="ConfigPathResolver.js.html#line71">line 71</a>
+        <a href="ConfigOptionsResolver.js.html">ConfigOptionsResolver.js</a>, <a href="ConfigOptionsResolver.js.html#line27">line 27</a>
     </li></ul></dd>
     
 
@@ -223,7 +180,7 @@
 
         
             
-<h4 class="name" id="nameResolver"><span class="type-signature">(protected, readonly) </span>nameResolver<span class="type-signature"> :<a href="ConfigNameResolver.html">ConfigNameResolver</a></span></h4>
+<h4 class="name" id="nameResolver"><span class="type-signature">(readonly) </span>nameResolver<span class="type-signature"> :<a href="ConfigNameResolver.html">ConfigNameResolver</a></span></h4>
 
 
 
@@ -273,75 +230,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="ConfigPathResolver.js.html">ConfigPathResolver.js</a>, <a href="ConfigPathResolver.js.html#line87">line 87</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-        
-            
-<h4 class="name" id="resolvers"><span class="type-signature">(protected, readonly) </span>resolvers<span class="type-signature"> :Array.&lt;function()></span></h4>
-
-
-
-
-
-
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">Array.&lt;function()></span>
-
-
-        </li>
-    </ul>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="ConfigPathResolver.js.html">ConfigPathResolver.js</a>, <a href="ConfigPathResolver.js.html#line96">line 96</a>
+        <a href="ConfigOptionsResolver.js.html">ConfigOptionsResolver.js</a>, <a href="ConfigOptionsResolver.js.html#line40">line 40</a>
     </li></ul></dd>
     
 
@@ -368,7 +257,7 @@
 
     
 
-    <h4 class="name" id="resolve"><span class="type-signature"></span>resolve<span class="signature">(value)</span><span class="type-signature"> &rarr; {String}</span></h4>
+    <h4 class="name" id="resolve"><span class="type-signature"></span>resolve<span class="signature">(config, options)</span><span class="type-signature"> &rarr; {Object}</span></h4>
 
     
 
@@ -407,13 +296,36 @@
 
         <tr>
             
-                <td class="name"><code>value</code></td>
+                <td class="name"><code>config</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">String</span>
+<span class="param-type"><a href="Config.html">Config</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#ConfigOptions">ConfigOptions</a></span>
 
 
             
@@ -464,7 +376,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="ConfigPathResolver.js.html">ConfigPathResolver.js</a>, <a href="ConfigPathResolver.js.html#line104">line 104</a>
+        <a href="ConfigOptionsResolver.js.html">ConfigOptionsResolver.js</a>, <a href="ConfigOptionsResolver.js.html#line59">line 59</a>
     </li></ul></dd>
     
 
@@ -498,7 +410,7 @@
     </dt>
     <dd>
         
-<span class="param-type">String</span>
+<span class="param-type">Object</span>
 
 
     </dd>

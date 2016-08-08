@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: ConfigList.js</title>
+    <title>JSDoc: Source: ConfigOptionsResolver.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: ConfigList.js</h1>
+    <h1 class="page-title">Source: ConfigOptionsResolver.js</h1>
 
     
 
@@ -26,13 +26,78 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>/**
- * @class
- * @extends {Array}
- */
-class ConfigList extends Array {}
+            <pre class="prettyprint source linenums"><code>import {
+    isFunction,
+    isString
+} from 'lodash';
+import RecursiveIterator from 'recursive-iterator';
 
-export default ConfigList;
+/**
+ * @function
+ * @name ConfigTransform
+ * @param {Config} config
+ * @returns {Config|Object}
+ */
+
+/**
+ * @typedef {Object|ConfigTransform} ConfigOptions
+ */
+
+/**
+ * @private
+ * @type {WeakMap}
+ */
+const NAME_RESOLVER = new WeakMap();
+
+/**
+ * @class
+ */
+class ConfigOptionsResolver {
+    /**
+     * @constructor
+     * @param {ConfigNameResolver} nameResolver
+     */
+    constructor(nameResolver) {
+        NAME_RESOLVER.set(this, nameResolver);
+    }
+
+    /**
+     * @readonly
+     * @type {ConfigNameResolver}
+     */
+    get nameResolver() {
+        return NAME_RESOLVER.get(this);
+    }
+
+    /**
+     * @private
+     * @param {Config} config
+     * @param {ConfigOptions} options
+     * @returns {Object}
+     */
+    static valueOf(config, options) {
+        return isFunction(options) ? options.call(config, config) : options;
+    }
+
+    /**
+     * @param {Config} config
+     * @param {ConfigOptions} options
+     * @returns {Object}
+     */
+    resolve(config, options) {
+        const value = ConfigOptionsResolver.valueOf(config, options);
+
+        for (const {parent, node, key} of new RecursiveIterator(value, 1, true)) {
+            if (isString(node)) {
+                parent[key] = this.nameResolver.resolve(node);
+            }
+        }
+
+        return value;
+    }
+}
+
+export default ConfigOptionsResolver;
 </code></pre>
         </article>
     </section>
