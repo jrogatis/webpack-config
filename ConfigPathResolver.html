@@ -40,7 +40,7 @@
 
     
 
-    <h4 class="name" id="ConfigPathResolver"><span class="type-signature"></span>new ConfigPathResolver<span class="signature">(nameResolver, resolvers<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="ConfigPathResolver"><span class="type-signature"></span>new ConfigPathResolver<span class="signature">(stringResolver, pathResolvers<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
 
     
 
@@ -81,13 +81,13 @@
 
         <tr>
             
-                <td class="name"><code>nameResolver</code></td>
+                <td class="name"><code>stringResolver</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type"><a href="ConfigNameResolver.html">ConfigNameResolver</a></span>
+<span class="param-type"><a href="ConfigStringResolver.html">ConfigStringResolver</a></span>
 
 
             
@@ -112,7 +112,7 @@
 
         <tr>
             
-                <td class="name"><code>resolvers</code></td>
+                <td class="name"><code>pathResolvers</code></td>
             
 
             <td class="type">
@@ -179,7 +179,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="ConfigPathResolver.js.html">ConfigPathResolver.js</a>, <a href="ConfigPathResolver.js.html#line71">line 71</a>
+        <a href="ConfigPathResolver.js.html">ConfigPathResolver.js</a>, <a href="ConfigPathResolver.js.html#line22">line 22</a>
     </li></ul></dd>
     
 
@@ -223,75 +223,7 @@
 
         
             
-<h4 class="name" id="nameResolver"><span class="type-signature">(protected, readonly) </span>nameResolver<span class="type-signature"> :<a href="ConfigNameResolver.html">ConfigNameResolver</a></span></h4>
-
-
-
-
-
-
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type"><a href="ConfigNameResolver.html">ConfigNameResolver</a></span>
-
-
-        </li>
-    </ul>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="ConfigPathResolver.js.html">ConfigPathResolver.js</a>, <a href="ConfigPathResolver.js.html#line87">line 87</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-        
-            
-<h4 class="name" id="resolvers"><span class="type-signature">(protected, readonly) </span>resolvers<span class="type-signature"> :Array.&lt;function()></span></h4>
+<h4 class="name" id="pathResolvers"><span class="type-signature">(readonly) </span>pathResolvers<span class="type-signature"> :Array.&lt;function()></span></h4>
 
 
 
@@ -341,7 +273,75 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="ConfigPathResolver.js.html">ConfigPathResolver.js</a>, <a href="ConfigPathResolver.js.html#line96">line 96</a>
+        <a href="ConfigPathResolver.js.html">ConfigPathResolver.js</a>, <a href="ConfigPathResolver.js.html#line45">line 45</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="stringResolver"><span class="type-signature">(readonly) </span>stringResolver<span class="type-signature"> :<a href="ConfigStringResolver.html">ConfigStringResolver</a></span></h4>
+
+
+
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><a href="ConfigStringResolver.html">ConfigStringResolver</a></span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="ConfigPathResolver.js.html">ConfigPathResolver.js</a>, <a href="ConfigPathResolver.js.html#line37">line 37</a>
     </li></ul></dd>
     
 
@@ -464,7 +464,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="ConfigPathResolver.js.html">ConfigPathResolver.js</a>, <a href="ConfigPathResolver.js.html#line104">line 104</a>
+        <a href="ConfigPathResolver.js.html">ConfigPathResolver.js</a>, <a href="ConfigPathResolver.js.html#line53">line 53</a>
     </li></ul></dd>
     
 
@@ -524,13 +524,13 @@
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-webpack-config.html">webpack-config</a></li></ul><h3>Externals</h3><ul><li><a href="external-RecursiveIterator.html">RecursiveIterator</a></li></ul><h3>Classes</h3><ul><li><a href="Config.html">Config</a></li><li><a href="ConfigBuilder.html">ConfigBuilder</a></li><li><a href="ConfigBuilderProxy.html">ConfigBuilderProxy</a></li><li><a href="ConfigCache.html">ConfigCache</a></li><li><a href="ConfigCommand.html">ConfigCommand</a></li><li><a href="ConfigContainer.html">ConfigContainer</a></li><li><a href="ConfigDefaultsCommand.html">ConfigDefaultsCommand</a></li><li><a href="ConfigDependency.html">ConfigDependency</a></li><li><a href="ConfigDependencyIterator.html">ConfigDependencyIterator</a></li><li><a href="ConfigEnvironment.html">ConfigEnvironment</a></li><li><a href="ConfigExtendCommand.html">ConfigExtendCommand</a></li><li><a href="ConfigFactory.html">ConfigFactory</a></li><li><a href="ConfigFinder.html">ConfigFinder</a></li><li><a href="ConfigList.html">ConfigList</a></li><li><a href="ConfigLoader.html">ConfigLoader</a></li><li><a href="ConfigMergeCommand.html">ConfigMergeCommand</a></li><li><a href="ConfigNameResolver.html">ConfigNameResolver</a></li><li><a href="ConfigOptionsResolver.html">ConfigOptionsResolver</a></li><li><a href="ConfigPathResolver.html">ConfigPathResolver</a></li><li><a href="ConfigPatternCache.html">ConfigPatternCache</a></li><li><a href="ConfigProxy.html">ConfigProxy</a></li></ul><h3>Global</h3><ul><li><a href="global.html#ConfigTransform">ConfigTransform</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-webpack-config.html">webpack-config</a></li></ul><h3>Externals</h3><ul><li><a href="external-RecursiveIterator.html">RecursiveIterator</a></li></ul><h3>Classes</h3><ul><li><a href="Config.html">Config</a></li><li><a href="ConfigBuilder.html">ConfigBuilder</a></li><li><a href="ConfigBuilderProxy.html">ConfigBuilderProxy</a></li><li><a href="ConfigCache.html">ConfigCache</a></li><li><a href="ConfigCommand.html">ConfigCommand</a></li><li><a href="ConfigContainer.html">ConfigContainer</a></li><li><a href="ConfigDefaultsCommand.html">ConfigDefaultsCommand</a></li><li><a href="ConfigDependency.html">ConfigDependency</a></li><li><a href="ConfigDependencyIterator.html">ConfigDependencyIterator</a></li><li><a href="ConfigEnvironment.html">ConfigEnvironment</a></li><li><a href="ConfigExtendCommand.html">ConfigExtendCommand</a></li><li><a href="ConfigFactory.html">ConfigFactory</a></li><li><a href="ConfigFinder.html">ConfigFinder</a></li><li><a href="ConfigList.html">ConfigList</a></li><li><a href="ConfigLoader.html">ConfigLoader</a></li><li><a href="ConfigMergeCommand.html">ConfigMergeCommand</a></li><li><a href="ConfigOptionsResolver.html">ConfigOptionsResolver</a></li><li><a href="ConfigPathResolver.html">ConfigPathResolver</a></li><li><a href="ConfigPatternCache.html">ConfigPatternCache</a></li><li><a href="ConfigProxy.html">ConfigProxy</a></li><li><a href="ConfigStringResolver.html">ConfigStringResolver</a></li></ul><h3>Global</h3><ul><li><a href="global.html#ConfigTransform">ConfigTransform</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Mon Aug 08 2016 16:00:40 GMT+0000 (UTC)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Mon Aug 08 2016 16:28:34 GMT+0000 (UTC)
 </footer>
 
 <script> prettyPrint(); </script>
