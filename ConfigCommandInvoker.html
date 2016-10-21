@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: ConfigEnvironment</title>
+    <title>JSDoc: Class: ConfigCommandInvoker</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: ConfigEnvironment</h1>
+    <h1 class="page-title">Class: ConfigCommandInvoker</h1>
 
     
 
@@ -28,7 +28,7 @@
 
 <header>
     
-        <h2>ConfigEnvironment</h2>
+        <h2>ConfigCommandInvoker</h2>
         
     
 </header>
@@ -40,114 +40,7 @@
 
     
 
-    <h4 class="name" id="ConfigEnvironment"><span class="type-signature"></span>new ConfigEnvironment<span class="signature">()</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="ConfigEnvironment.js.html">ConfigEnvironment.js</a>, <a href="ConfigEnvironment.js.html#line10">line 10</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-    </div>
-
-    
-        <h3 class="subsection-title">Extends</h3>
-
-        
-
-
-    <ul>
-        <li>Map</li>
-    </ul>
-
-
-    
-
-    
-
-    
-
-     
-
-    
-
-    
-
-    
-        <h3 class="subsection-title">Methods</h3>
-
-        
-            
-
-    
-
-    <h4 class="name" id="getOrDefault"><span class="type-signature"></span>getOrDefault<span class="signature">(key, defaultValue<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {*}</span></h4>
+    <h4 class="name" id="ConfigCommandInvoker"><span class="type-signature"></span>new ConfigCommandInvoker<span class="signature">(command)</span><span class="type-signature"></span></h4>
 
     
 
@@ -174,8 +67,6 @@
         <th>Type</th>
 
         
-        <th>Attributes</th>
-        
 
         
 
@@ -188,59 +79,18 @@
 
         <tr>
             
-                <td class="name"><code>key</code></td>
+                <td class="name"><code>command</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">*</span>
+<span class="param-type"><a href="ConfigCommand.html">ConfigCommand</a></span>
 
 
             
             </td>
 
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>defaultValue</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">*</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
             
 
             
@@ -286,7 +136,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="ConfigEnvironment.js.html">ConfigEnvironment.js</a>, <a href="ConfigEnvironment.js.html#line40">line 40</a>
+        <a href="ConfigCommandInvoker.js.html">ConfigCommandInvoker.js</a>, <a href="ConfigCommandInvoker.js.html#line10">line 10</a>
     </li></ul></dd>
     
 
@@ -309,33 +159,105 @@
 
 
 
-<h5>Returns:</h5>
-
-        
 
 
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">*</span>
 
-
-    </dd>
-</dl>
+    
+    </div>
 
     
 
+    
 
+    
+
+     
+
+    
+
+    
+        <h3 class="subsection-title">Members</h3>
+
+        
+            
+<h4 class="name" id="command"><span class="type-signature">(readonly) </span>command<span class="type-signature"> :<a href="ConfigCommand.html">ConfigCommand</a></span></h4>
+
+
+
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><a href="ConfigCommand.html">ConfigCommand</a></span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="ConfigCommandInvoker.js.html">ConfigCommandInvoker.js</a>, <a href="ConfigCommandInvoker.js.html#line23">line 23</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
 
         
             
 
     
 
-    <h4 class="name" id="setAll"><span class="type-signature"></span>setAll<span class="signature">(&hellip;values)</span><span class="type-signature"> &rarr; {<a href="ConfigEnvironment.html">ConfigEnvironment</a>}</span></h4>
+    <h4 class="name" id="invoke"><span class="type-signature"></span>invoke<span class="signature">(config, &hellip;values)</span><span class="type-signature"> &rarr; {<a href="Config.html">Config</a>}</span></h4>
 
     
 
@@ -376,13 +298,44 @@
 
         <tr>
             
+                <td class="name"><code>config</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="Config.html">Config</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
                 <td class="name"><code>values</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">Object.&lt;String, *></span>
+<span class="param-type">*</span>
 
 
             
@@ -443,7 +396,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="ConfigEnvironment.js.html">ConfigEnvironment.js</a>, <a href="ConfigEnvironment.js.html#line15">line 15</a>
+        <a href="ConfigCommandInvoker.js.html">ConfigCommandInvoker.js</a>, <a href="ConfigCommandInvoker.js.html#line32">line 32</a>
     </li></ul></dd>
     
 
@@ -477,152 +430,7 @@
     </dt>
     <dd>
         
-<span class="param-type"><a href="ConfigEnvironment.html">ConfigEnvironment</a></span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="valueOf"><span class="type-signature"></span>valueOf<span class="signature">(key)</span><span class="type-signature"> &rarr; {*}</span></h4>
-
-    
-
-
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>key</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">*</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="ConfigEnvironment.js.html">ConfigEnvironment.js</a>, <a href="ConfigEnvironment.js.html#line29">line 29</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">*</span>
+<span class="param-type"><a href="Config.html">Config</a></span>
 
 
     </dd>

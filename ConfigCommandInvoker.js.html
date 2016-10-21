@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: ConfigFinder.js</title>
+    <title>JSDoc: Source: ConfigCommandInvoker.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: ConfigFinder.js</h1>
+    <h1 class="page-title">Source: ConfigCommandInvoker.js</h1>
 
     
 
@@ -26,98 +26,47 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import {
-    sep,
-    join,
-    basename
-} from 'path';
-import {
-    trimEnd,
-    dropRight,
-    includes
-} from 'lodash';
-import {
-    sync,
-    Glob
-} from 'glob';
-import glob2base from 'glob2base';
-
-/**
+            <pre class="prettyprint source linenums"><code>/**
  * @private
  * @type {WeakMap}
  */
-const PATH_RESOLVER = new WeakMap();
-
-/**
- * @private
- * @type {Object}
- */
-const GLOB_OPTIONS = {
-    cache: true,
-    dot: false,
-    silent: true
-};
+const COMMAND = new WeakMap();
 
 /**
  * @class
  */
-class ConfigFinder {
+class ConfigCommandInvoker {
     /**
      * @constructor
-     * @param {ConfigPathResolver} pathResolver
+     * @param {ConfigCommand} command
      */
-    constructor(pathResolver) {
-        PATH_RESOLVER.set(this, pathResolver);
+    constructor(command) {
+        COMMAND.set(this, command);
     }
 
     /**
      * @readonly
-     * @type {ConfigPathResolver}
+     * @type {ConfigCommand}
      */
-    get pathResolver() {
-        return PATH_RESOLVER.get(this);
+    get command() {
+        return COMMAND.get(this);
     }
 
     /**
-     * @param {String} pattern
-     * @param {String[]} [visited]
-     * @returns {String[]}
+     * @param {Config} config
+     * @param {...*} values
+     * @returns {Config}
      */
-    findClosestConfigs(pattern, visited = []) {
-        pattern = this.pathResolver.resolve(pattern);
-
-        if (includes(visited, pattern)) {
-            return [];
+    invoke(config, ...values) {
+        for (const value of values) {
+            this.command.execute(config, value);
         }
 
-        visited.push(pattern);
-
-        const configs = this.findConfigs(pattern);
-
-        if (configs.length > 0) {
-            return configs;
-        }
-
-        const cwd = glob2base(new Glob(pattern)),
-            paths = trimEnd(cwd, sep).split(sep);
-
-        pattern = join(dropRight(paths).join(sep), basename(pattern));
-
-        return this.findClosestConfigs(pattern, visited);
-    }
-
-    /**
-     * @param {String} pattern
-     * @returns {String[]}
-     */
-    findConfigs(pattern) {
-        pattern = this.pathResolver.resolve(pattern);
-
-        return sync(pattern, GLOB_OPTIONS).map(filename => this.pathResolver.resolve(filename));
+        return config;
     }
 }
 
-export default ConfigFinder;
+export default ConfigCommandInvoker;
 </code></pre>
         </article>
     </section>

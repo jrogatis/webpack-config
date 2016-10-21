@@ -201,7 +201,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Config.js.html">Config.js</a>, <a href="Config.js.html#line84">line 84</a>
+        <a href="Config.js.html">Config.js</a>, <a href="Config.js.html#line70">line 70</a>
     </li></ul></dd>
     
 
@@ -225,7 +225,7 @@
 
 
 <div class="description">
-    <p>Keeps information about configs which have been loaded via <a href="Config.html#extend">Config#extend</a></p>
+    <p>Holds information about <a href="Config.html#extend">included</a> configs</p>
 </div>
 
 
@@ -251,8 +251,10 @@
     
 
     
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
+
+    
+    <dt class="tag-overrides">Overrides:</dt>
+    <dd class="tag-overrides"><ul class="dummy"><li>
         <a href="Config.html#dependencyTree">Config#dependencyTree</a>
     </li></ul></dd>
     
@@ -274,11 +276,9 @@
     
 
     
-
-    
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Config.js.html">Config.js</a>, <a href="Config.js.html#line124">line 124</a>
+        <a href="Config.js.html">Config.js</a>, <a href="Config.js.html#line110">line 110</a>
     </li></ul></dd>
     
 
@@ -301,7 +301,7 @@ const config = new Config();
 
 config.extend('./test/fixtures/webpack.1.config.js');
 
-for (let {node} of config.dependencyTree) {
+for (const {node} of config.dependencyTree) {
   console.log(node.root.filename);
 }
 // ./test/fixtures/webpack.1.config.js
@@ -369,7 +369,7 @@ for (let {node} of config.dependencyTree) {
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Config.js.html">Config.js</a>, <a href="Config.js.html#line100">line 100</a>
+        <a href="Config.js.html">Config.js</a>, <a href="Config.js.html#line86">line 86</a>
     </li></ul></dd>
     
 
@@ -442,7 +442,7 @@ for (let {node} of config.dependencyTree) {
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Config.js.html">Config.js</a>, <a href="Config.js.html#line76">line 76</a>
+        <a href="Config.js.html">Config.js</a>, <a href="Config.js.html#line62">line 62</a>
     </li></ul></dd>
     
 
@@ -515,7 +515,7 @@ for (let {node} of config.dependencyTree) {
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Config.js.html">Config.js</a>, <a href="Config.js.html#line92">line 92</a>
+        <a href="Config.js.html">Config.js</a>, <a href="Config.js.html#line78">line 78</a>
     </li></ul></dd>
     
 
@@ -598,7 +598,7 @@ for (let {node} of config.dependencyTree) {
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Config.js.html">Config.js</a>, <a href="Config.js.html#line243">line 243</a>
+        <a href="Config.js.html">Config.js</a>, <a href="Config.js.html#line237">line 237</a>
     </li></ul></dd>
     
 
@@ -778,7 +778,7 @@ console.log(config.clone());
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Config.js.html">Config.js</a>, <a href="Config.js.html#line152">line 152</a>
+        <a href="Config.js.html">Config.js</a>, <a href="Config.js.html#line146">line 146</a>
     </li></ul></dd>
     
 
@@ -955,7 +955,7 @@ export default new Config().defaults(() => {
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Config.js.html">Config.js</a>, <a href="Config.js.html#line224">line 224</a>
+        <a href="Config.js.html">Config.js</a>, <a href="Config.js.html#line218">line 218</a>
     </li></ul></dd>
     
 
@@ -1150,7 +1150,7 @@ export default new Config().extend({
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Config.js.html">Config.js</a>, <a href="Config.js.html#line311">line 311</a>
+        <a href="Config.js.html">Config.js</a>, <a href="Config.js.html#line307">line 307</a>
     </li></ul></dd>
     
 
@@ -1316,7 +1316,7 @@ console.log(config.get('debug'));
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Config.js.html">Config.js</a>, <a href="Config.js.html#line349">line 349</a>
+        <a href="Config.js.html">Config.js</a>, <a href="Config.js.html#line345">line 345</a>
     </li></ul></dd>
     
 
@@ -1494,7 +1494,7 @@ console.log(config.has('debug'));
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Config.js.html">Config.js</a>, <a href="Config.js.html#line177">line 177</a>
+        <a href="Config.js.html">Config.js</a>, <a href="Config.js.html#line171">line 171</a>
     </li></ul></dd>
     
 
@@ -1667,7 +1667,7 @@ export default new Config().merge(() => {
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Config.js.html">Config.js</a>, <a href="Config.js.html#line329">line 329</a>
+        <a href="Config.js.html">Config.js</a>, <a href="Config.js.html#line325">line 325</a>
     </li></ul></dd>
     
 
@@ -1856,7 +1856,7 @@ console.log(config.get('debug'));
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Config.js.html">Config.js</a>, <a href="Config.js.html#line291">line 291</a>
+        <a href="Config.js.html">Config.js</a>, <a href="Config.js.html#line287">line 287</a>
     </li></ul></dd>
     
 
@@ -1969,7 +1969,7 @@ console.log(config.toObject());
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Config.js.html">Config.js</a>, <a href="Config.js.html#line356">line 356</a>
+        <a href="Config.js.html">Config.js</a>, <a href="Config.js.html#line352">line 352</a>
     </li></ul></dd>
     
 
@@ -2074,7 +2074,7 @@ console.log(config.toObject());
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Config.js.html">Config.js</a>, <a href="Config.js.html#line262">line 262</a>
+        <a href="Config.js.html">Config.js</a>, <a href="Config.js.html#line260">line 260</a>
     </li></ul></dd>
     
 
@@ -2148,13 +2148,13 @@ console.log(config.toObject());
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-webpack-config.html">webpack-config</a></li></ul><h3>Externals</h3><ul><li><a href="external-RecursiveIterator.html">RecursiveIterator</a></li></ul><h3>Classes</h3><ul><li><a href="Config.html">Config</a></li><li><a href="ConfigBuilder.html">ConfigBuilder</a></li><li><a href="ConfigBuilderProxy.html">ConfigBuilderProxy</a></li><li><a href="ConfigCache.html">ConfigCache</a></li><li><a href="ConfigCommand.html">ConfigCommand</a></li><li><a href="ConfigContainer.html">ConfigContainer</a></li><li><a href="ConfigDefaultsCommand.html">ConfigDefaultsCommand</a></li><li><a href="ConfigDependency.html">ConfigDependency</a></li><li><a href="ConfigDependencyIterator.html">ConfigDependencyIterator</a></li><li><a href="ConfigEnvironment.html">ConfigEnvironment</a></li><li><a href="ConfigExtendCommand.html">ConfigExtendCommand</a></li><li><a href="ConfigFactory.html">ConfigFactory</a></li><li><a href="ConfigFinder.html">ConfigFinder</a></li><li><a href="ConfigList.html">ConfigList</a></li><li><a href="ConfigLoader.html">ConfigLoader</a></li><li><a href="ConfigMergeCommand.html">ConfigMergeCommand</a></li><li><a href="ConfigOptionsResolver.html">ConfigOptionsResolver</a></li><li><a href="ConfigPathResolver.html">ConfigPathResolver</a></li><li><a href="ConfigPatternCache.html">ConfigPatternCache</a></li><li><a href="ConfigProxy.html">ConfigProxy</a></li><li><a href="ConfigStringResolver.html">ConfigStringResolver</a></li></ul><h3>Global</h3><ul><li><a href="global.html#ConfigTransform">ConfigTransform</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-webpack-config.html">webpack-config</a></li></ul><h3>Externals</h3><ul><li><a href="external-RecursiveIterator.html">RecursiveIterator</a></li></ul><h3>Classes</h3><ul><li><a href="Config.html">Config</a></li><li><a href="ConfigBuilder.html">ConfigBuilder</a></li><li><a href="ConfigBuilderProxy.html">ConfigBuilderProxy</a></li><li><a href="ConfigCache.html">ConfigCache</a></li><li><a href="ConfigCommand.html">ConfigCommand</a></li><li><a href="ConfigCommandInvoker.html">ConfigCommandInvoker</a></li><li><a href="ConfigContainer.html">ConfigContainer</a></li><li><a href="ConfigDefaultsCommand.html">ConfigDefaultsCommand</a></li><li><a href="ConfigDependency.html">ConfigDependency</a></li><li><a href="ConfigDependencyIterator.html">ConfigDependencyIterator</a></li><li><a href="ConfigEnvironment.html">ConfigEnvironment</a></li><li><a href="ConfigExtendCommand.html">ConfigExtendCommand</a></li><li><a href="ConfigFactory.html">ConfigFactory</a></li><li><a href="ConfigFinder.html">ConfigFinder</a></li><li><a href="ConfigList.html">ConfigList</a></li><li><a href="ConfigLoader.html">ConfigLoader</a></li><li><a href="ConfigMergeCommand.html">ConfigMergeCommand</a></li><li><a href="ConfigOptionsResolver.html">ConfigOptionsResolver</a></li><li><a href="ConfigPathResolver.html">ConfigPathResolver</a></li><li><a href="ConfigPatternCache.html">ConfigPatternCache</a></li><li><a href="ConfigProxy.html">ConfigProxy</a></li><li><a href="ConfigStringResolver.html">ConfigStringResolver</a></li></ul><h3>Global</h3><ul><li><a href="global.html#ConfigTransform">ConfigTransform</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.2</a> on Fri Oct 21 2016 14:50:30 GMT+0000 (UTC)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.2</a> on Fri Oct 21 2016 20:46:31 GMT+0000 (UTC)
 </footer>
 
 <script> prettyPrint(); </script>
