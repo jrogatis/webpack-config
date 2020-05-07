@@ -17,7 +17,9 @@
     "gitdown": "gitdown ./.gitdown/README.md --output-file ./README.md",
     "jsdoc": "jsdoc ./src -c ./jsdoc.json",
     "gh-pages": "gh-pages -r https://${GH_TOKEN}@github.com/mdreizin/webpack-config.git -d docs",
-    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "nyc": {
     "include": [
@@ -71,6 +73,8 @@
     "glob": "^7.0.6",
     "glob2base": "0.0.12",
     "lodash": "^4.17.2",
-    "recursive-iterator": "^2.0.0"
-  }
+    "recursive-iterator": "^2.0.0",
+    "snyk": "^1.319.1"
+  },
+  "snyk": true
 }
